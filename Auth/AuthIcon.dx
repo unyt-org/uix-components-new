@@ -1,0 +1,27 @@
+use localtext from #std;
+
+# strings ----------------------------------
+export val body = {
+	profile: localtext {
+		en: 'Your account',
+		de: "Dein Account"
+	},
+	applications: localtext {
+		en: 'Applications',
+		de: "Applikationen"
+	},
+	preferences: localtext {
+		en: 'Preferences',
+		de: "Einstellungen"
+	},
+	support: localtext {
+		en: 'Help',
+		de: "Hilfe"
+	},
+	sign_out: localtext {
+		en: 'Sign out',
+		de: "Ausloggen"
+	}
+};
+export val strings = {
+};

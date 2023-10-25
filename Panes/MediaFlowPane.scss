@@ -1,0 +1,81 @@
+@use "../utils" as *;
+
+.image-flow-pane {
+	background-color: var(--bg_lighter);
+	padding: var(--padding);
+	padding-bottom: 100px;
+	padding-top: 0px;
+	&[data-padding-top] {
+		padding-top: 100px;
+	}
+	@media screen and (max-width: 700px) { 
+		padding-bottom: 50px;
+		&[data-padding-top] {
+			padding-top: 50px;
+		}
+	}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&[data-appearance="dark"] {
+		background-color: var(--bg_dark);
+	}
+	&[data-appearance="transparent"] {
+		background-color: transparent;
+	}
+	text-align: center;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		max-width: 1200px;
+		&>h1 {
+			font-size: 40px;
+		}
+		&>span {
+			font-size: larger;
+		}
+		&>div {
+			margin-top: 50px;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 100px;
+			&>img, &>video {
+				display: block;
+				max-width: min(50%, 500px);
+				display: block;
+				width: auto;
+				height: auto;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 3px 3px 15px 10px var(--bg_color);
+			}
+			@media screen and (max-width: 700px) {
+				flex-direction: column;
+				gap: 30px;
+				&>img, &>video {
+					max-width: 100%;
+				}
+			}
+			&>uix-text {
+				text-align: left;
+				flex: 1;
+				font-size: large;
+				p {
+					margin: 0;
+				}
+			}
+		}
+	}
+	&[data-alignment="right"] {
+		.content > div {
+			flex-direction: row-reverse;
+			@media screen and (max-width: 700px) {
+				flex-direction: column;
+			}
+		}
+	}
+}

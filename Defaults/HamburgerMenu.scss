@@ -1,0 +1,104 @@
+:root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	width: fit-content!important;
+	padding: 10px;
+	justify-content: flex-start;
+	#menuIcon {
+		font-size: xx-large;
+		color: var(--text_accent_1);
+		opacity: 0.8;
+		transition: opacity 0.1s linear;
+		z-index: 11;
+		&:hover, &:active {
+			opacity: 1;
+		}
+	}
+	#menuContainer {
+		position: fixed;
+		width: 100%;
+		left: 0;
+		top: 0;
+		/* z-index: -1; */
+		display: flex;
+		flex-direction: column;
+		padding: 28px;
+		padding-top: 70px;
+		padding-bottom: 10px;
+		box-sizing: border-box;
+		background-color: var(--bg_color)!important;
+		box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 8px !important;
+		max-height: 0;
+		overflow: hidden;
+		opacity: 0;
+		transition: opacity 0.2s ease-in-out, max-height 0.2s ease-in-out, margin 0.2s ease-in-out, width 0s;
+		margin-top: -20px;
+		z-index: 1;
+		width: 100%;
+
+		details > summary {
+			list-style: none;
+		}
+		
+		details > summary::marker,
+		details > summary::-webkit-details-marker {
+			display: none;
+		}
+		details {
+			padding-top: 0;
+			a {
+				color: var(--text);
+				margin-top: 4px;
+				font-size: large;
+			}
+		}
+		details[open] summary::after {
+			transform: rotate(180deg);
+		}
+		summary {
+			cursor: pointer;
+			position: relative;
+			a {
+				color: var(--text_accent_1)
+			}
+			&::after {
+				transition: transform 0.2s;
+				top: 0;
+				right: 0;
+				font-family: var(--fa-style-family, "Font Awesome 6 Free");
+				font-weight: var(--fa-style, 900);
+				content: '\f078';
+				align-items: center;
+				align-self: center;
+				justify-self: center;
+				height: 100%;
+				display: flex;
+				position: absolute;
+			}
+		}
+		
+		&>* {
+			position: relative;
+			width: calc(100% - 20px);
+			border-bottom: 1px solid gray;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			color: var(--text_accent_1);
+			font-size: large;
+			display: flex;
+			width: 100%;
+			&:last-child {
+				border-bottom: 0px;
+			}
+		}
+		&.active {
+			display: flex;
+			opacity: 1;
+			z-index: 10;
+			max-height: 100%;
+			margin-top: 0px;
+		}
+	}
+}

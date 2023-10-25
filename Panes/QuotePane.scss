@@ -1,0 +1,35 @@
+:host {
+	.quote-pane {
+		display: flex;
+		justify-content: space-between;
+		grid-gap: 40px;
+		margin-bottom: 30px;
+		flex-wrap: wrap;
+		&>div {
+			min-width: 200px;
+			border-top: 1px solid rgb(71, 71, 71);
+			padding-top: 30px;
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			&>span {
+				font-size: 80px;
+				line-height: 0;
+				font-family: "monospace";
+				margin-top: 50px;
+				color: var(--text_accent_1);
+			}
+			&>p {
+				font-size: x-large;
+				line-height: 1;
+				color: var(--text_accent_1);
+				margin-top: 6px;
+			}
+			&>:last-child {
+				font-size: large;
+				margin-top: auto;
+				font-family: sans-serif;
+			}
+		}
+	}
+}

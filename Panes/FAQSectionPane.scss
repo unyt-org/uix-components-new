@@ -1,0 +1,110 @@
+@use "../utils" as *;
+
+.faq-section-pane {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: block;
+	details {
+		&>summary::-webkit-details-marker {
+			display:none;
+		}
+		white-space: break-spaces;
+		position: relative !important;
+		font-size: large;
+		&[open] {
+			*:not(h3) {
+				animation: fade-in .3s;
+			}
+			summary, h3 {
+				animation-duration: 0s;
+				animation: none !important;
+			}
+			ul {
+				margin: 0!important;
+				display: flex;
+				flex-direction: column;
+			}
+			uix-text {
+				display: inline-flex!important;
+				flex-direction: column;
+				margin-bottom: 10px;
+				word-break: break-word;
+				p {
+					margin: 0px!important;
+				}
+			}
+		}
+	}
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		
+		100% {
+			opacity: 1;
+		}
+	}
+	summary {
+		color: var(--text_accent_1);
+		list-style: none !important;
+		position: relative !important;
+		
+		> h3 {
+			margin-left: 30px;
+			font-weight: normal;
+			display: inline-block!important;
+		}
+		
+		&::before {
+			top: 0px;
+			font-weight: 700;
+			content: "-";
+			opacity: 0;
+		}
+		
+		&::after, &::before {
+			position: absolute;
+			left: 0;
+			display: block;
+			width: 23px;
+			height: 30px;
+			top: 0;
+			bottom: 0;
+			margin-top: auto;
+			margin-bottom: auto;
+			font-size: 32px;
+			line-height: 1em;
+			text-align: center;
+			background: linear-gradient(-70deg, #797ef9 0%, #967cb7 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			-webkit-box-decoration-break: clone;
+			box-decoration-break: clone;
+			transition: transform .3s ease,opacity .2s ease;
+		}
+	}
+	details[open] {
+		* {
+			opacity: 1;
+		}
+		
+		summary {
+			&::before {
+				opacity: 1;
+				transform: rotateZ(180deg);
+			}
+		
+			&::after {
+				opacity: 0;
+				transform: rotateZ(180deg);
+			}
+		}
+	}
+	summary {
+		&::after {
+			content: "+";
+		}
+		user-select: none;
+	}
+}

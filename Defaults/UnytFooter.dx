@@ -1,0 +1,52 @@
+use localtext from #std;
+
+
+# refs ----------------------------------
+export val refs = [
+	{
+		name: 'GitHub',
+		icon: 'fa-brands fa-github',
+		link: https://github.com/unyt-org
+	},
+	{
+		name: 'GitLab',
+		icon: 'fa-brands fa-gitlab',
+		link: https://gitlab.com/unyt
+	},
+	{
+		name: 'Discord',
+		icon: 'fa-brands fa-discord',
+		link: https://unyt.org/discord
+	},
+	{
+		name: 'Twitter',
+		icon: 'fa-brands fa-twitter',
+		link: https://twitter.com/unytorg
+	},
+	{
+		name: 'LinkedIn',
+		icon: 'fa-brands fa-linkedin',
+		link: https://linkedin.com/in/unyt
+	},
+	{
+		name: 'Instagram',
+		icon: 'fa-brands fa-instagram',
+		link: https://instagram.com/unytorg
+	},
+];
+
+# strings ----------------------------------
+export val strings = {
+	terms: localtext {
+		en: 'Terms',
+		de: 'Nutzungsbedingungen'
+	},
+	privacy: localtext {
+		en: 'Privacy',
+		de: 'Datenschutz'
+	},
+	about: localtext {
+		en: 'Legal Notice',
+		de: 'Impressum'
+	}
+};

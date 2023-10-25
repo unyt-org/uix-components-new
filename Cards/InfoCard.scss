@@ -1,0 +1,36 @@
+@use "../utils" as *;
+
+:host {
+	flex: 1;
+	display: inline-grid!important;
+}
+.info-card {
+	background-color: var(--bg_lighter);
+	padding: 30px;
+	margin: 10px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	min-width: 150px;
+	// max-width: 300px;
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	h1 {
+		font-family: Helvetica,Arial,sans-serif!important;
+		font-feature-settings: "liga","ss01";
+		font-size: 48px;
+		letter-spacing: -0.03em;
+		margin: 0;
+		word-spacing: 0.1em;
+	}
+	div {
+		-webkit-text-fill-color: transparent;
+		background-image: linear-gradient(90deg, #cc9dff 12%, #fc76bb 40%, #fd8279 90%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		font-size: 20px !important;
+		line-height: 28px !important;
+	}
+}

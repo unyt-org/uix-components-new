@@ -1,0 +1,111 @@
+.whitepaper-pane {
+	top: 1px;
+	width: 80%;
+	max-width: 1600px;
+	@media screen and (max-width: 700px) { 
+		width: calc(100% - 40px);
+	}
+	h1 {
+		uix-text p {
+			padding: 0;
+			margin: 0!important;
+			strong {
+				background: -webkit-linear-gradient(-70deg,#8250df 0%,#d42a32 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: rgba(0,0,0,0);
+				-webkit-box-decoration-break: clone;
+				font-weight: bold;
+			}
+		}
+	}
+	margin: auto;
+	left: 0;
+	right: 0;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		background: linear-gradient(90deg, #c3a8f4, #e87b81);
+		border-radius: 10px;
+	}
+	.content {
+		background-color: var(--bg_button);
+		border-radius: 10px;
+		padding: 40px;
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		@media screen and (max-width: 1000px) {
+			grid-template-columns: 1fr;
+			padding: 20px;
+			&>div {
+				padding: 0!important;
+				border: 0px!important;
+			}
+			h1, p {
+				text-align: center;
+			}
+
+			&>div:first-of-type {
+				&>a {
+					width: auto!important;
+				}
+			}
+			&>div:last-of-type {
+				p {
+					font-size: medium!important;
+				}
+			}
+		}
+		position: relative;
+		&>img {
+			width: 40%;
+			margin-left: 20px;
+			padding-top: 20px;
+			object-fit: contain;
+			margin-bottom: -180px;
+		}
+		&>div:first-of-type {
+			border-right: 1px solid gray;
+			display: flex;
+			flex-direction: column;
+			padding-right: 3rem;
+			h1 {
+				font-size: 40px;
+				@media screen and (min-width: 1000px) {
+					font-size: 56px;
+				}
+			}
+			&>a {
+				padding: 8px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border: 1px solid var(--text_accent_1);
+				border-radius: 20px;
+				margin-top: 30px;
+				margin-bottom: 10px;
+				color: white;
+				background: -webkit-linear-gradient(-70deg, #8250df 0%, #d42a32 100%);
+				text-decoration: none!important;
+				width: fit-content;
+				padding-left: 50px;
+				padding-right: 50px;
+				&:hover, &:active {
+					background: transparent;
+				}
+			}
+		}
+		&>div:last-of-type {
+			padding-left: 3rem;
+			p {
+				font-size: large;
+			}
+		}
+	}
+}

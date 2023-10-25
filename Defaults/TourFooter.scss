@@ -1,0 +1,330 @@
+@use "../utils" as *;
+#content_container {
+	background: transparent!important;
+	height: fit-content!important;
+}
+
+.tour-footer-main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 40px;
+	flex-wrap: wrap;
+}
+.tour-footer-main > div:first-of-type {
+	min-width: 200px;
+	flex: 1;
+}
+.tour-footer-main > div:last-of-type {
+	flex: 1;
+	max-width: 200px;
+}
+
+.tour-footer-main > div:first-of-type h1 {
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-size: 40px;
+	font-family: Helvetica;
+	display: flex;
+}
+.tour-footer-main > div:first-of-type {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	grid-gap: 0px;
+}
+.tour-footer-main > div:first-of-type p {
+	font-size: large;
+	margin: 0;
+}
+.tour-footer-main > div:first-of-type h1 > span {
+	position: relative;
+	width: fit-content;
+}
+.tour-footer-main > div:first-of-type h1 > span::before {
+	content: var(--content);
+	position: absolute;
+	display: block;
+	width: 100%;
+	text-align: center;
+	background: linear-gradient(180deg,#fff,hsla(0,0%,100%,.75));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+}
+
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(1)::before {
+	animation: animation-background-1 var(--delay) infinite;
+}
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(2)::before {
+	animation: animation-background-2 var(--delay) infinite;
+}
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(3)::before {
+	animation: animation-background-3 var(--delay) infinite;
+}
+
+.tour-footer-main > div:first-of-type h1 > span > span {
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-image: linear-gradient(90deg, var(--start-color), var(--end-color));
+	position: relative;
+	z-index: 1;
+}
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(1) > span {
+	animation: animation-foreground-1 var(--delay) infinite;
+}
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(2) > span {
+	animation: animation-foreground-2 var(--delay) infinite;
+}
+.tour-footer-main > div:first-of-type h1 > span:nth-of-type(3) > span {
+	animation: animation-foreground-3 var(--delay) infinite;
+}
+
+@keyframes animation-foreground-1 {
+	0%, 17%,to {
+		opacity: 1
+	}
+
+	33%, 83% {
+		opacity: 0
+	}
+}
+
+@keyframes animation-background-1 {
+	0%, 17%, to {
+		opacity: 0
+	}
+
+	25%, 92% {
+		opacity: 1
+	}
+}
+
+@keyframes animation-foreground-2 {
+	0%, to {
+		opacity: 0
+	}
+
+	33%, 50% {
+		opacity: 1
+	}
+
+	17%, 67% {
+		opacity: 0
+	}
+}
+
+@keyframes animation-background-2 {
+	0%, to {
+		opacity: 1
+	}
+
+	33%, 50% {
+		opacity: 0
+	}
+
+	25%, 58% {
+		opacity: 1
+	}
+}
+
+@keyframes animation-foreground-3 {
+    0%, 50%, to {
+        opacity: 0
+    }
+
+    67%, 83% {
+        opacity: 1
+    }
+}
+
+@keyframes animation-background-3 {
+	0%, 58%, 92%,to {
+		opacity: 1
+	}
+
+	67%, 83% {
+		opacity: 0
+	}
+}
+
+
+@keyframes animated-gradient-text {
+	0%, 20%, to {
+		opacity: 0
+	}
+	25%, 90% {
+		opacity: 1
+	}
+}
+
+
+.tour-footer-main > div:last-of-type {
+	display: flex;
+	flex-direction: column;
+	grid-gap: 20px;
+	padding: 60px;
+}
+.tour-footer-main > div > .button-elem  {
+	padding: 12px;
+	border: 1px solid white;
+	background-color: white;
+}
+.button-elem:hover {
+	cursor: pointer;
+}
+.button-elem {
+	color: white;
+	text-decoration: none!important;
+}
+.tour-footer-main > div > .button-elem {
+	color: black;
+}
+.tour-footer-main > div > .button-elem:hover,
+.tour-footer-main > div > .button-elem:active {
+	background-color: transparent;
+	color: var(--text_accent_1);
+}
+.tour-footer-main > .button-elem {
+	background-color: transparent;
+}
+.tour-footer-main .button-container {
+	z-index: 2;
+	transition: transform 0.1s linear;
+}
+.tour-footer-main .button-container:active {
+	transform: scale(0.98);
+}
+.tour-footer-main .button-elem {
+	padding: 10px;
+	border-radius: 6px;
+	color: white;
+	// background-color: black;
+	border-color: transparent;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.tour-footer-main > div .button-container .button-elem {
+	padding: 13px;
+}
+.tour-footer-main > div .button-container .button-elem:hover,
+.tour-footer-main > div .button-container .button-elem:active {
+	color: white;
+	background-color: black;
+}
+uix-button {
+	border-radius: 6px;
+}
+.button-elem {
+	transition: transform 0.1s linear;
+}
+.button-elem:active {
+	transform: scale(0.98);
+}
+
+.tour-footer-main .button-container {
+	height: fit-content;
+	position: relative;
+}
+.tour-footer-main .button-container > span {
+	position: absolute;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+	padding: 1px;
+	margin-top: -1px;
+	border-radius: 6px;
+	margin-left: -1px;
+	background-image: linear-gradient(90deg, var(--start-color), var(--end-color));
+}
+
+.tour-footer-main .button-container > span:nth-of-type(1) {
+	animation: animation-button-background-1 var(--delay) infinite;
+}
+.tour-footer-main .button-container > span:nth-of-type(2) {
+	animation: animation-button-background-2 var(--delay) infinite;
+}
+.tour-footer-main .button-container > span:nth-of-type(3) {
+	animation: animation-button-background-3 var(--delay) infinite;
+}
+.tour-footer-main .button-container > span::before {
+	background-image: linear-gradient(165deg,var(--start-color),var(--end-color));
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	filter: blur(20px);
+	border-radius: 10px;
+	background-clip: padding-box;
+	border: 10px solid transparent;
+	opacity: 1;
+	box-sizing: border-box;
+}
+
+
+@keyframes animation-button-background-1 {
+	0%, 17%,to {
+		opacity: 1
+	}
+
+	33%, 83% {
+		opacity: 0
+	}
+}
+
+@keyframes animation-button-background-2 {
+	0%, 17%, 67%, to {
+		opacity: 0
+	}
+	33%, 50% {
+		opacity: 1
+	}
+}
+
+@keyframes animation-button-background-3 {
+	0%, 50%,to {
+		opacity: 0
+	}
+	67%,8% {
+		opacity: 1
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.tour-footer-main {
+		flex-direction: column;
+	}
+	.tour-footer-main > div:first-of-type {
+		text-align: center;
+	}
+	.tour-footer-main > div:first-of-type h1 {
+		justify-content: center;
+	}
+	.tour-footer-main > div:last-of-type {
+		padding-top: 0px;
+		max-width: 400px!important;
+		width: 60%;
+		padding-right: 60px;
+	}
+}
+
+@include mode(light) {
+	.tour-footer-main > div:first-of-type h1 > span::before {
+		background: linear-gradient(180deg,#000,hsla(255,100%,0%,.75));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	.tour-footer-main > div > .button-elem  {
+		border-color: black;
+		background-color: transparent;
+	}
+	.tour-footer-main > div > .button-elem:hover,
+	.tour-footer-main > div > .button-elem:active {
+		background-color: black;
+		color: white;
+	}
+}

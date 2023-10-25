@@ -1,0 +1,147 @@
+use localtext from #std;
+export val strings = {
+	theme_dark: localtext {
+		en: 'Dark mode',
+		de: 'Modus: Dunkel'
+	},
+	theme_light: localtext {
+		en: 'Light mode',
+		de: 'Modus: Hell'
+	},
+};
+
+# map ----------------------------------
+export val map = [
+	{
+		topic: localtext {
+			en: 'Product',
+			de: 'Produkt'
+		},
+		items: [
+			{
+				name: 'Whitepaper',
+				link: https://unyt.org/whitepaper
+			},
+			{
+				name: localtext {
+					en: 'Features',
+					de: 'Möglichkeiten'
+				},
+				link: https://unyt.org/
+			},
+			{
+				name: localtext {
+					en: 'Sponsors',
+					de: 'Sponsors'
+				},
+				link: https://unyt.org/sponsors
+			},
+			{
+				name: localtext {
+					en: 'PGP',
+					de: 'PGP'
+				},
+				link: https://unyt.org/pgp
+			},
+		]
+	},
+	{
+		topic: localtext {
+			en: 'Support',
+			de: 'Hilfe'
+		},
+		items: [
+			{
+				name: localtext {
+					en: 'Docs',
+					de: 'Doku'
+				},
+				link: https://docs.unyt.org/
+			},
+			{
+				name: localtext {
+					en: 'Glossary',
+					de: 'Glossar'
+				},
+				link: "https://unyt.org/glossary"
+			},
+			{
+				name: localtext {
+					en: 'Blog',
+					de: 'Blog'
+				},
+				link: https://unyt.blog
+			},
+			{
+				name: localtext {
+					en: 'Status',
+					de: 'Status'
+				},
+				link: https://status.unyt.org
+			}
+		]
+	},
+	{
+		topic: localtext {
+			en: 'Company',
+			de: 'Firma'
+		},
+		items: [
+			{
+				name: localtext {
+					en: 'Join us',
+					de: 'Mitmachen'
+				},
+				link: https://unyt.org/join
+			},
+			{
+				name: localtext {
+					en: 'Press',
+					de: 'Presse'
+				},
+				link: https://unyt.org/about
+			},
+			{
+				name: localtext {
+					en: 'Careers',
+					de: 'Karriere'
+				},
+				link: "mailto:join@unyt.org"
+			},
+			{
+				name: localtext {
+					en: 'Contact',
+					de: 'Kontakt'
+				},
+				link: "mailto:support@unyt.org"
+			},
+		]
+	},
+	{
+		topic: localtext {
+			en: 'Team',
+			de: 'Team'
+		},
+		items: [
+			{
+				name: localtext {
+					en: "About us",
+					de: "Über uns"
+				},
+				link: https://unyt.org/team
+			},
+			{
+				name: 'Jonas Strehle',
+				link: https://github.com/jonasstrehle
+			},
+			{
+				name: 'Benedikt Strehle',
+				link: https://github.com/benstre
+			},
+			{
+				name: 'Tim Köhler',
+				link: https://github.com/KoehlerT
+			}
+		]
+	},
+]

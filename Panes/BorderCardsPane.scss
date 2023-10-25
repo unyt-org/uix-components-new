@@ -1,0 +1,42 @@
+.border-cards-pane {
+	display: flex;
+	flex-direction: column;
+
+
+	&>h1, &>span {
+		text-align: center;
+	}
+	&>span {
+		margin-bottom: 30px;
+	}
+	&>div {
+		display: flex;
+		flex-direction: row;
+		@media screen and (max-width: 600px) { 
+			flex-direction: column;
+		}
+		grid-gap: 16px;
+		justify-content: space-evenly;
+
+		&>fieldset {
+			padding-left: 20px;
+			padding-right: 20px;
+			&>legend {
+				text-align: center;
+				position: relative;
+				margin: auto;	
+				padding-left: 12px;
+				padding-right: 12px;
+				line-height: 100%;
+				color: var(--text_accent_1);
+				font-size: x-large;
+			}
+			border-radius: 8px;
+			border-color: var(--current_text_color);;
+			border-style: solid;
+			* {
+				font-size: large;
+			}
+		}
+	}
+}

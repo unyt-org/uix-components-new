@@ -1,0 +1,117 @@
+.app-download-pane {
+	top: 1px;
+	width: 80%;
+	max-width: 1600px;
+	@media screen and (max-width: 700px) { 
+		width: calc(100% - 40px);
+	}
+	uix-text p {
+		padding: 0;
+		margin: 0!important;
+		strong {
+			background: -webkit-linear-gradient(-70deg,#8250df 0%,#d42a32 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: rgba(0,0,0,0);
+			-webkit-box-decoration-break: clone;
+			font-weight: bold;
+		}
+	}
+	margin: auto;
+	left: 0;
+	right: 0;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
+		background: linear-gradient(90deg, #c3a8f4, #e87b81);
+		border-radius: 10px;
+	}
+	.content {
+		background-color: var(--bg_button);
+		border-radius: 10px;
+		padding: 20px;
+		h1 {
+			margin-top: 20px;
+		}
+		overflow: hidden;
+		display: flex;
+		grid-gap: 20px;
+		position: relative;
+		max-height: 400px;
+		&>img {
+			width: 40%;
+			margin-left: 20px;
+			padding-top: 20px;
+			object-fit: contain;
+			margin-bottom: -180px;
+		}
+		&>div {
+			display: flex;
+			flex-direction: column;
+			width: calc(60% - 40px);
+			h1 {
+				font-size: 40px;
+				@media screen and (min-width: 1000px) {
+					font-size: 56px;
+				}
+				@media screen and (min-width: 1300px) {
+					font-size: 76px;
+				}
+			}
+			&>div {
+				display: flex;
+				flex-direction: row;
+				grid-gap: 20px;
+				align-items: center;
+				margin-bottom: 20px;
+				justify-content: space-around;
+				width: calc(100% - 20px);
+				flex-wrap: wrap;
+				margin-top: auto;
+				a {
+					flex: 1;
+					width: 100px;
+					max-width: 300px;
+					flex-wrap: wrap;
+					min-width: 100px;
+					img {
+						width: 100%;
+						transition: all 0.2s;
+						&:hover, &:active {
+							transform: scale(0.98);
+							opacity: 0.8;
+						}
+					}
+				}
+			}
+		}
+
+		@media screen and (max-width: 580px) { 
+			flex-direction: column;
+			&>div {
+				display: flex;
+				width: calc(100% - 20px);
+				margin: 10px;
+				grid-gap: 20px;
+			}
+			&>img {
+				display: none;
+			}
+		}
+		@media screen and (max-width: 400px) {
+			&>div {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				&>div {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}

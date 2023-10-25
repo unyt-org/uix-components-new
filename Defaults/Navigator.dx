@@ -1,0 +1,53 @@
+use localtext from #std;
+
+
+# strings ----------------------------------
+export val strings = {
+	buttonBeta: localtext {
+		en: 'Join the unyt Beta',
+		de: 'Zur unyt Beta'
+	},
+	buttonContact: localtext {
+		en: 'Contact unyt',
+		de: 'Kontaktiere unyt'
+	}
+};
+
+# links ----------------------------------
+export val links = [
+	{
+		name: localtext {
+			en: "Overview",
+			de: "Übersicht"
+		},
+		link: 'overview'
+	},
+	{
+		name: localtext {
+			en: "Developers",
+			de: "Entwickler"
+		},
+		link: 'developers'
+	},
+	{
+		name: localtext {
+			en: "Backers",
+			de: "Unterstützer"
+		},
+		link: 'backers'
+	},
+	{
+		name: localtext {
+			en: "Our Vision",
+			de: "Unsere Vision"
+		},
+		link: 'vision'
+	},
+	{
+		name: localtext {
+			en: "FAQ",
+			de: "FAQ"
+		},
+		link: 'faq'
+	}
+]

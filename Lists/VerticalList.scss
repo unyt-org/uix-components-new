@@ -1,0 +1,49 @@
+@use "../utils" as *;
+
+.vertical-list {
+	display: flex;
+	list-style: none;
+	flex-direction: column;
+	--color: gray;
+
+	&>li {
+		position: relative;
+		padding-left: 30px;
+		&::before {
+			position: absolute;
+			left: 8px;
+			width: 1px;
+			height: calc(100% - 16px);
+			top: 22px;
+			content: "";
+			background-color: var(--color);
+		}
+		&:last-of-type {
+			&::before {
+				display: none;
+			}
+		}
+		&>p {
+			margin-top: 0px;
+			font-size: large;
+			* {
+				margin-right: 4px;
+			}
+			b {
+				color: var(--text_accent_1);
+			}
+		}
+		&>div {
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			left: 0;
+			box-sizing: border-box;
+			svg {
+				overflow: visible !important;
+				vertical-align: middle;
+				fill: var(--color);
+			}
+		}
+	}
+}

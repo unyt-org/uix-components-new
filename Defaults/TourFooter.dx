@@ -1,0 +1,29 @@
+use localtext from #std;
+
+# strings ----------------------------------
+export val strings = {
+	description: localtext {
+		en: 'We want to be able to continue our work on [unyt.org]\(https://unyt.org) and remain independent. So if you share our vision, we **appreciate your support**!',
+		de: 'Wir möchten unsere Arbeit an [unyt.org]\(https://unyt.org) fortsetzen können und weiterhin unabhängig bleiben. Wenn du also unsere Vision teilen, **freuen wir uns über jede Unterstützung**!'
+	},
+	button1: localtext {
+		en: 'To GitHub',
+		de: 'Zu GitHub',
+	},
+	button2: localtext {
+		en: 'To Patreon',
+		de: 'Zu Patreon',
+	},
+	keyword1: localtext {
+		en: 'We',
+		de: 'Wir'
+	},
+	keyword2: localtext {
+		en: 'Need',
+		de: 'Brauchen'
+	},
+	keyword3: localtext {
+		en: 'You',
+		de: 'Dich'
+	}
+};

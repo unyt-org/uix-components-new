@@ -1,0 +1,119 @@
+@use "../utils.scss" as *;
+
+:host {
+	width: 100%;
+	background-color: var(--bg_color)!important;
+	border-top: 1px solid darkgray;
+	display: flex;
+	&>div {
+		margin-left: 20px!important;
+		margin-right: 20px!important;
+		width: calc(100% - 40px);
+		margin-bottom: 30px;
+		margin-top: 30px;
+		position: relative;
+	}
+
+
+
+	#sitemapTitle {
+		font-size: xx-large;
+		color: var(--text_accent_1);
+	}
+
+	#sitemapTitle>img {
+		height: 1em;
+	}
+
+	@include mode(dark) {
+		#sitemapTitle>img {
+			filter: grayscale(1) brightness(100);
+		}
+	}
+
+	@include mode(light) {
+		#sitemapTitle>img {
+			filter: grayscale(1) brightness(0);
+		}
+	}
+
+
+
+	#sitemapSections {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		max-width: 500px;
+	}
+	#sitemapSections > div {
+		display: flex;
+		margin-right: 20px;
+		flex-direction: column;
+	}
+	#sitemapSections > div .title {
+		font-size: large;
+		margin-bottom: 0px;
+	}
+	#sitemapSections > div a {
+		font-size: medium;
+		color: var(--text)!important;
+		opacity: 0.4;
+	}
+
+	#sitemapSections > div a:hover {
+		opacity: 0.8;
+	}
+
+	@media screen and (max-width: 730px) {
+		#sitemapSections > div {
+			width: 40%;
+			margin-top: 40px;
+		}
+		#settingsRow {
+			float: none!important;
+			justify-content: space-between;
+			margin-top: 10px!important;
+		}
+	}
+
+	#sitemapLink {
+		position: absolute;
+		right: 10px;
+		top: 0px;
+		font-size: large;
+	}
+	#sitemapLink {
+		color: var(--text)!important
+	}
+	#sitemapLink:hover {
+		color: var(--text_accent_1)!important
+	}
+
+	#settingsRow {
+		display: flex;
+		align-items: center;
+		float: right;
+		margin-top: -20px;
+
+		.dropdown {
+			width: 100%!important;
+		}
+	}
+	#settingsRow > div {
+		display: flex;
+		background-color: var(--bg_content_dark);
+		border: 1px solid rgba(171, 171, 171, 0.19);
+		border-radius: 5px;
+		margin-left: 5px;
+	}
+	#settingsRow > div > span {
+		margin-left: 7px;
+		margin-right: 4px;
+	}
+	#apperanceToggle {
+		display: flex!important;
+		justify-content: center;
+		align-items: center;
+		margin-left: 4px;
+	}
+}

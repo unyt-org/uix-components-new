@@ -1,0 +1,40 @@
+use localtext from #std;
+
+# links ----------------------------------
+export val links = [
+	{
+		name: localtext {
+			en: 'Overview',
+			de: 'Übersicht'
+		},
+		link: '/#overview'
+	},
+	{
+		name: localtext {
+			en: 'Blog',
+			de: 'Blog'
+		},
+		link: 'https://unyt.blog'
+	},
+	{
+		name: localtext {
+			en: 'Source Code',
+			de: 'Source Code'
+		},
+		link: 'https://github.com/unyt-org'
+	},
+	{
+		name: localtext {
+			en: 'Documentation',
+			de: 'Dokumentation'
+		},
+		link: 'https://docs.unyt.org'
+	},
+	{
+		name: localtext {
+			en: 'Participate',
+			de: 'Mitmachen'
+		},
+		link: '/join'
+	},
+];
