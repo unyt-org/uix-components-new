@@ -32,17 +32,17 @@ export default class ToggleSwitch extends Component<Component.Options & {
 	}
 
 	@frontend
-	public onChange(callback: (e: ToggleEvent)=>void) {
-		this.addEventListener("change", e => callback(e));
+	public onToggle(callback: (e: ToggleEvent)=>void) {
+		this.addEventListener("toggle", e => callback(e));
 	}
 
 	@frontend
 	protected override onDisplay(): void|Promise<void> {
-		this.onChange((e)=>{
+		this.onToggle((e)=>{
 			e.detail?.checked
 		})
 		this.switch.addEventListener("input", (e) => {
-			this.dispatchEvent(new CustomEvent("change", {
+			this.dispatchEvent(new CustomEvent("toggle", {
 				detail: {
 					checked: this.checked,
 					originalEvent: e
