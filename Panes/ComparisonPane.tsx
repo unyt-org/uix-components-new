@@ -1,6 +1,7 @@
 import { Path } from "uix/utils/path.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 type ComparisonHeaderItem = {
 	title: string,
@@ -48,9 +49,7 @@ export type ComparisonPaneOptions = {
 								{
 									item.description && 
 									<span class="info">
-										{new UIX.Elements.Text(item.description, {
-											markdown: true
-										})}
+										<Markdown value={item.description}/>
 									</span>
 								}
 							</td>
@@ -60,7 +59,7 @@ export type ComparisonPaneOptions = {
 										{
 											(typeof value === "boolean") ?
 												<span class={value ? "yes": "no"}/> :
-												new UIX.Elements.Text(value, { markdown: true })
+												<Markdown value={value}/>
 										}
 									</td>
 								})}

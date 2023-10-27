@@ -1,5 +1,6 @@
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 type WhitepaperPaneOptions = {
 	header: string,
@@ -11,11 +12,13 @@ type WhitepaperPaneOptions = {
 	<div class="whitepaper-pane">
 		<div class="content">
 			<div>
-				<h1>{new UIX.Elements.Text(header, { markdown: true })}</h1>
+				<h1>
+					<Markdown value={header}/>
+				</h1>
 				<a href={link}>{buttonText}</a>
 			</div>
 			<div>
-				{new UIX.Elements.Text(description, { markdown: true })}
+				<Markdown value={description}/>
 				<img src=""/>
 			</div>
 		</div>

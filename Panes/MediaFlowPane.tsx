@@ -2,6 +2,7 @@ import { Datex } from "unyt_core/datex.ts";
 import { Path } from "uix/utils/path.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 type MediaFlowPaneOptions = {
 	title?: string,
@@ -23,7 +24,7 @@ type MediaFlowPaneOptions = {
 			}
 			<div>
 				{this.getMediaElement(mediaSrc)}
-				{new UIX.Elements.Text(description, { markdown: true})}
+				<Markdown value={description}/>
 			</div>
 		</div>
 	</div>

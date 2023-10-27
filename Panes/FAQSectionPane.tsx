@@ -1,5 +1,6 @@
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 export type FAQSectionPaneItem = {
 	title: string,
@@ -14,7 +15,7 @@ type FAQSectionPaneOptions = {
 			<summary><h3>{item.title}</h3></summary>
 			{Array.isArray(item.description) ? 
 				item.description.map(e => e) : 
-				new UIX.Elements.Text(item.description, { markdown: true})
+				<Markdown value={item.description}/>
 			}
 		</details>)}
 	</div>

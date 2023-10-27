@@ -1,6 +1,7 @@
 import { Datex } from "unyt_core/datex.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 @Component({
 	temporary: true,
@@ -32,7 +33,7 @@ export class TourFooter extends Component<Component.Options & { reverseOrder?: b
 						<span>{this.strings.keyword3}.</span>
 					</span>
 				</h1>
-				{ new UIX.Elements.Text(this.strings.description, { markdown: true })}
+				<Markdown value={this.strings.description}/>
 			</div>
 			<div>
 				<a href={href[0]} class="button-elem">

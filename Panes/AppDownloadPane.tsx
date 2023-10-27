@@ -1,6 +1,7 @@
 import { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 type AppDownloadPaneOptions = {
 	header: string,
@@ -13,7 +14,9 @@ type AppDownloadPaneOptions = {
 		<div class="content">
 			<img src={image}/>
 			<div>
-				<h1>{new UIX.Elements.Text(header, { markdown: true })}</h1>
+				<h1>
+					<Markdown value={header}/>
+				</h1>
 				<div>
 					<a target="_blank" href={linkAppstore}>
 						<img src={"https://cdn.unyt.org/unyt-resources/logos/third-party/app-store/apple-badge.svg"}/>

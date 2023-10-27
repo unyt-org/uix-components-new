@@ -1,5 +1,6 @@
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
+import Markdown from "unyt/components/Markdown.tsx";
 
 type ArticlePaneOptions = {
 	title: string,
@@ -30,7 +31,9 @@ export type ArticlePaneItem = {
 							{item.image && <img src={item.image}/>}
 							{item.subtitle && <span class="subtitle">{item.subtitle}</span>}
 							<h2>{item.title}</h2>
-							<span>{new UIX.Elements.Text(item.description, {markdown: true})}</span>
+							<span>
+								<Markdown value={item.description}/>
+							</span>
 							<a href={item.link}>{item.linkText ?? "Click to see more"} <Icon name="fa-chevron-right"/></a>
 						</div>
 					})
