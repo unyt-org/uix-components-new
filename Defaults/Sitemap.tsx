@@ -75,8 +75,7 @@ export class Sitemap extends Component<Component.Options> {
 		
 		this.apperanceToggle.checked = UIX.Theme.mode === "dark";
 		this.apperanceToggle.onToggle(e => {
-			console.log("change", e.detail?.checked)
-			UIX.Theme.setMode(e.detail?.checked ? "dark" : "light");
+			UIX.Theme.setMode(e ? "dark" : "light");
 		})
 	}
 

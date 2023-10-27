@@ -20,7 +20,8 @@ export type ToggleEvent = CustomEventInit<{checked: boolean, originalEvent: Even
 export default class ToggleSwitch extends Component<Component.Options & {
 	checked?: boolean,
 	size?: number,
-	label?: string | HTMLElement
+	label?: string | HTMLElement,
+	ontoggle?: (value: boolean) => void
 }> {
 	@frontend @id("toggle-switch") declare switch: HTMLInputElement;
 
@@ -32,16 +33,16 @@ export default class ToggleSwitch extends Component<Component.Options & {
 	}
 
 	@frontend
-	public onToggle(callback: (e: ToggleEvent)=>void) {
-		this.addEventListener("toggle", e => callback(e));
+	public onToggle(callback: (value: boolean)=>void) {
+		this.addEventListener("toggle", (e: ToggleEvent) => callback(e.detail?.checked ?? this.checked));
 	}
 
 	@frontend
 	protected override onDisplay(): void|Promise<void> {
-		this.onToggle((e)=>{
-			e.detail?.checked
-		})
+		if (this.options.ontoggle)
+			this.onToggle((e) => this.options.ontoggle!(e));
 		this.switch.addEventListener("input", (e) => {
+			e.stopImmediatePropagation();
 			this.dispatchEvent(new CustomEvent("toggle", {
 				detail: {
 					checked: this.checked,
