@@ -5,15 +5,22 @@ import { use } from "uix/base/decorators.ts";
 import { Icon } from "unyt/uix-components-new/Defaults/Icon.tsx";
 
 
-@template()
+@template(function(this: UnytFooter) {
+	return <>
+		<div class="copyright">&copy; <span>2023 unyt.org</span></div>
+		<div class="tos">
+			<a href="https://unyt.org/terms-of-service" target="_blank">{this.strings.terms}</a>
+			<a href="https://unyt.org/privacy" target="_blank">{this.strings.privacy}</a>
+			<a href="https://unyt.org/legal-notice" target="_blank">{this.strings.about}</a>
+		</div>
+		<div id="references" class="references"></div>
+	</>
+})
 export class UnytFooter extends Component<Component.Options> {
-	@content copyright = HTML `<div>&copy; <span>2023 unyt.org</span></div>`
-	@content tos = HTML `<div/>`;
-	@content references = HTML `<div/>`;
 	@use declare refs: Array<{name: string, link:URL, icon:URL | string}>;
 	@use declare strings: Record<string, string>;
 
-	// @content declare listView: UIX.Components.ListGroup;
+	@id declare references: HTMLDivElement;
 
 	public expand() {
 		this.classList.add("expanded");
@@ -24,28 +31,9 @@ export class UnytFooter extends Component<Component.Options> {
 
 	override onCreate() {
 		this.refs.forEach((ref) => {
-			this.references.append(<a href={ref.link}>
+			this.references.append(<a title={ref.name} href={ref.link}>
 				<Icon name={ref.icon.toString()}/>
-				{ref.name}
 			</a>
 		)});
-		return;
-		this.tos.append(
-			new Anchor({
-				title: this.strings.terms,
-				href: "https://unyt.org/terms-of-service",
-				sameWindow: true
-			}),
-			new Anchor({
-				title: this.strings.privacy,
-				href: "https://unyt.org/privacy",
-				sameWindow: true
-			}),
-			new Anchor({
-				title: this.strings.about,
-				href: "https://unyt.org/legal-notice",
-				sameWindow: true
-			})
-		)
 	}
 }
