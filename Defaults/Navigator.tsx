@@ -1,6 +1,5 @@
 import { Datex } from "unyt_core/datex.ts";
 import { Component } from "uix/components/Component.ts";
-import { Anchor } from "./StandardElements.tsx";
 import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 import { use } from "uix/base/decorators.ts";
@@ -27,27 +26,13 @@ export class Navigator extends Component<Component.Options> {
 		});
 
 		this.body.append(
-			<div class="buttons"> 
-			{new Anchor({
-				content: new UIX.Elements.Button({
-					text: this.strings.buttonBeta,
-					color: '#292d39',
-					icon: IEL `fa-chevron-right`,
-					text_color: "white",
-					onClick: () => window.open("https://unyt.org/beta")
-				}),
-				href: "https://unyt.org/beta"
-			})}
-			{new Anchor({
-				content: new UIX.Elements.Button({
-					text: this.strings.buttonContact,
-					color: "white",
-					icon: IEL `fa-chevron-right`,
-					text_color: "black",
-					onClick: () => location.href = "mailto:hello@unyt.org"
-				}),
-				href: "https://unyt.org"
-			})}
+			<div class="buttons">
+				<a href="https://unyt.org/beta">
+					{this.strings.buttonBeta} <Icon name="fa-chevron-right"/>
+				</a>
+				<a href="mailto:hello@unyt.org">
+					{this.strings.buttonContact} <Icon name="fa-chevron-right"/>
+				</a>
 			</div>
 		)
 	}

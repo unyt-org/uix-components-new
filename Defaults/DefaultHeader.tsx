@@ -1,4 +1,3 @@
-import { AuthComponent } from '../Auth/AuthComponent.tsx';
 import { HamburgerMenu } from './HamburgerMenu.tsx';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
@@ -46,7 +45,7 @@ export class DefaultHeader extends Component {
 	}
 
 	protected createLogo(): Element | void {
-		return <a id="logo" href="/" onclick={UIX.bindToDisplayContext(()=>this.reload())}>
+		return <a id="logo" href="/" onclick:frontend={()=>this.reload()}>
 			<img src="https://cdn.unyt.org/unyt-resources/logos/unyt/text-light-transparent-3.svg"/>
 		</a>;
 	}
@@ -57,7 +56,6 @@ export class DefaultHeader extends Component {
 	}
 	protected createActions(): Element | void {
 		return <div id="actionContainer">
-			<AuthComponent/>
 		</div>;
 	}
 

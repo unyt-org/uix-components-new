@@ -1,16 +1,9 @@
-// deno-lint-ignore-file no-namespace
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 
-export namespace HamburgerMenu {
-	export interface Options extends Component.Options {
-		action: "default" | "none"
-	}
-}
-
 @template()
-export class HamburgerMenu extends Component<HamburgerMenu.Options> {
+export class HamburgerMenu extends Component<Component.Options & { action?: "default" | "none"}> {
 	public isCollapsed = true;
 
 	@frontend @content menuIcon = <Icon name="fa-bars"/>;

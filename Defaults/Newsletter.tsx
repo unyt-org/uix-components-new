@@ -3,8 +3,6 @@ import { template } from "uix/html/template.ts";
 import { Datex, f, not, or, and, transform } from "unyt_core";
 import { use } from "uix/base/decorators.ts";
 
-// import { NewsletterServer } from "backend/NewsletterServer.ts";
-
 @template()
 export class Newsletter extends Component<Component.Options> {
 	@content declare newsletterTitle: HTMLElement;
@@ -19,7 +17,7 @@ export class Newsletter extends Component<Component.Options> {
 		mailDisabled: false
 	}
 
-	@content declare emailInput: UIX.Elements.EMailInput;
+	@content emailInput: UIX.Elements.EMailInput;
 	@content declare sendButton: UIX.Elements.Button;
 	@use declare strings: Record<string,Datex.Value<string>>
 
@@ -35,12 +33,8 @@ export class Newsletter extends Component<Component.Options> {
 		const userValid = transform([user], (user) => (!user.name.includes(' ') && mail.val.startsWith("@") &&user.name?.length >= 4 && user!=Datex.BROADCAST));
 
 
-		this.emailInput = new UIX.Elements.EMailInput(mail, {
-			placeholder: this.strings.mailPlaceholder,
-			valid: or(userValid, mailDisplayValid)
-		}).css({
-			width: "70%"
-		});
+		this.emailInput = <input data-valid={or(userValid, mailDisplayValid)} type="email" value={mail} placeholder={this.strings.mailPlaceholder}/>
+		
 		transform([userValid], valid => {
 			(this.emailInput.firstChild as HTMLInputElement).style.color = valid ? "var(--unyt_sky_blue)": "unset"
 			return valid;

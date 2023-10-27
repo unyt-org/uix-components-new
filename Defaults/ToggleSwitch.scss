@@ -1,0 +1,63 @@
+:host {
+	--size: 50px;
+	--bg_color: var(--bg_console);
+	--highlight_color: var(--text_highlight);
+	&>.label {
+		margin-right: 6px;
+	}
+	&>.toggle-switch {
+		width: fit-content;
+		position: relative;
+		display: inline-block;
+		width: var(--size);
+		height: calc(var(--size) / 1.8);
+		input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+			&:checked + .slider {
+				background-color:var(--accent);
+			}
+			&:focus + .slider {
+				box-shadow: 0 0 1px var(--accent);
+			}
+			&:checked + .slider:before {
+				-ms-transform: translateX(calc(50% + 4px));
+				transform: translateX(calc(50% + 4px));
+			}
+		}
+		position: relative;
+		.slider {
+			border: 1px solid var(--text_highlight);
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: var(--bg-dark);
+			-webkit-transition: .4s;
+			transition: .4s;
+			border-radius: var(--size);
+			&:before {
+				border-radius: 50%;
+				position: absolute;
+				content: "";
+				height: calc(var(--size) / 2.5);
+				width: calc(var(--size) / 2.5);
+				left: -4px;
+				transform: translateX(-50%);
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: white;
+				-webkit-transition: .4s;
+				transition: .4s;
+			}
+		}
+	}
+}

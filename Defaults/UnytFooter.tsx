@@ -1,15 +1,11 @@
 
 import { Component } from "uix/components/Component.ts";
-import { Anchor } from './StandardElements.tsx';
-import { AnchorIcon } from './StandardElements.tsx';
 import { template } from "uix/html/template.ts";
+import { use } from "uix/base/decorators.ts";
+import { Icon } from "unyt/uix-components-new/Defaults/Icon.tsx";
 
 
-@Component({
-	temporary: true,
-	border_radius: 0,
-	border: false
-})
+@template()
 export class UnytFooter extends Component<Component.Options> {
 	@content copyright = HTML `<div>&copy; <span>2023 unyt.org</span></div>`
 	@content tos = HTML `<div/>`;
@@ -20,22 +16,20 @@ export class UnytFooter extends Component<Component.Options> {
 	// @content declare listView: UIX.Components.ListGroup;
 
 	public expand() {
-		this.content_container.classList.add("expanded");
+		this.classList.add("expanded");
 	}
 	public collapse() {
-		this.content_container.classList.remove("expanded");
+		this.classList.remove("expanded");
 	}
 
 	override onCreate() {
 		this.refs.forEach((ref) => {
-			this.references.append(
-				new AnchorIcon({
-					size: 30,
-					title: ref.name,
-					href: ref.link,
-					icon: ref.icon
-				})
+			this.references.append(<a href={ref.link}>
+				<Icon name={ref.icon.toString()}/>
+				{ref.name}
+			</a>
 		)});
+		return;
 		this.tos.append(
 			new Anchor({
 				title: this.strings.terms,

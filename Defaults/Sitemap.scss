@@ -1,6 +1,9 @@
 @use "../utils.scss" as *;
 
 :host {
+	a {
+		text-decoration: none!important;
+	}
 	width: 100%;
 	background-color: var(--bg_color)!important;
 	border-top: 1px solid darkgray;
@@ -44,26 +47,25 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 		max-width: 500px;
+		&>div {
+			display: flex;
+			gap: 8px;
+			margin-right: 20px;
+			flex-direction: column;
+			.title {
+				font-size: large;
+				margin-bottom: 0px;
+			}
+			a {
+				font-size: medium;
+				color: var(--text)!important;
+				opacity: 0.4;
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
 	}
-	#sitemapSections > div {
-		display: flex;
-		margin-right: 20px;
-		flex-direction: column;
-	}
-	#sitemapSections > div .title {
-		font-size: large;
-		margin-bottom: 0px;
-	}
-	#sitemapSections > div a {
-		font-size: medium;
-		color: var(--text)!important;
-		opacity: 0.4;
-	}
-
-	#sitemapSections > div a:hover {
-		opacity: 0.8;
-	}
-
 	@media screen and (max-width: 730px) {
 		#sitemapSections > div {
 			width: 40%;
@@ -114,6 +116,6 @@
 		display: flex!important;
 		justify-content: center;
 		align-items: center;
-		margin-left: 4px;
+		padding: 2px 8px;
 	}
 }
