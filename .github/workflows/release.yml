@@ -1,29 +1,15 @@
 on:
-  release:
-    types: [published]
-
+    release:
+      types: [published]
+  
 env:
-  CDN_TOKEN: ${{secrets.CDN_TOKEN}}
-
-permissions:
-  actions: write
-  contents: write
+    CDN_TOKEN: ${{secrets.CDN_TOKEN}}
 
 jobs:
+    trigger-cdn-update:
+        runs-on: ubuntu-latest
 
-  trigger-cdn-update:
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Edit Release  
-        uses: irongut/EditRelease@v1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          id: ${{ github.event.release.id }}
-          replacebody: false
-          body: "Commit Hash: ${{ github.sha }}"
-
-      - name: Make CDN Update Request
-        run: |
-          curl "https://cdn.unyt.org/update/$GITHUB_REPOSITORY?token=$CDN_TOKEN"
+        steps:
+        - name: Make CDN Update Request
+          run: |
+            curl "https://cdn.unyt.org/update/$GITHUB_REPOSITORY?token=$CDN_TOKEN"
