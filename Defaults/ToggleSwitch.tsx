@@ -33,7 +33,7 @@ export default class ToggleSwitch extends Component<Component.Options & {
 			this.switch.checked = val;
 	}
 	public get checked(): boolean {
-		return this.switch.checked;
+		return this.switch?.checked;
 	}
 
 	@frontend
