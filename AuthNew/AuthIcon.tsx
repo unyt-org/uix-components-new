@@ -32,6 +32,7 @@ export class AuthIcon extends Component {
 			document.body.removeChild(this.blockerElem);
 		document.body.classList.toggle("disable-scroll", this.isBlockerActive());
 	}
+	@frontend
 	isBlockerActive() {
 		return this.blockerElem?.isConnected;
 	}
