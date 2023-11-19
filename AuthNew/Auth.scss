@@ -1,0 +1,40 @@
+body.disable-scroll {
+	overflow: hidden!important;
+}
+#blocker {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji";
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 100000;
+	background: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	backdrop-filter: blur(20px);
+	color: white;
+	img {
+		max-width: 140px;
+	}
+	&>p {
+		width: calc(100% - 20px);
+		max-width: 500px;
+		margin-left: auto;
+		text-align: center;
+		font-size: large;
+		margin-right: auto;
+		&>a {
+			cursor: pointer;
+			display: flex;
+			text-align: center;
+			margin: auto;
+			justify-content: center;
+			margin-top: 10px;
+			text-decoration: underline;
+			color: var(--accent);
+		}
+	}
+}
