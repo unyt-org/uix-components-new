@@ -100,19 +100,15 @@
 			box-shadow: 0px 0px 8px var(--bg-color);
 		}
 	}
-	&>span {
-		font-size: medium;
-		color: var(--text);
-		transition: color 0.2s;
+	&>.chevron-down {
+		stroke: var(--text);
+		transition: color 0.2s, stroke 0.2s;
 		&:hover {
-			color: var(--text-highlight)
+			stroke: var(--text-highlight)
 		}
 		transition: transform 0.3s;
-		&::before {
-			content: "\f077"!important;
-		}
 	}
-	&.expanded > span {
+	&.expanded > .chevron-down {
 		transform: rotate(180deg)!important;
 	}
 
