@@ -8,7 +8,7 @@ export function Icon({name}: {name: string}) {
 				rel={"stylesheet"}/>);
 	} else {
 		// FIXME add to document head on deno!
-		console.warn("Could not add font awesome!")
+		// console.warn("Could not add font awesome!")
 	}
 	return <span class={`fa ${name}`}/>
 }

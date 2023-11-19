@@ -90,7 +90,7 @@ export class AuthIcon extends Component {
 		console.debug("Loading unyt Auth frame...");
 		this.classList.toggle("expanded", false);
 		setTimeout(()=>{
-			this.iframe.src = "http://localhost:9999";
+			this.iframe.src = "https://auth-content.unyt.org"//"http://localhost:9999";
 		}, 300);
 	}
 
