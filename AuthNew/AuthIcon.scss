@@ -105,10 +105,10 @@
 		height: 50px;
 	}
 	&>.chevron-down {
-		stroke: var(--text);
-		transition: color 0.2s, stroke;
+		fill: var(--text);
+		transition: color 0.2s, fill;
 		&:hover {
-			stroke: var(--text-highlight)
+			fill: var(--text-highlight)
 		}
 		transition: transform 0.3s;
 	}
