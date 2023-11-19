@@ -51,7 +51,7 @@ export class AuthIcon extends Component {
 			this.strings = (await datex.get<{strings: any}>("./AuthIcon.dx")).strings;
 
 		this.blockerElem = <div id="blocker">
-			<img src="http://localhost:9999/@uix/src/common/res/logo2-light.svg"/>
+			<img src="https://cdn.unyt.org/unyt-resources/logos/unyt/AUTH/text-light-transparent.svg"/>
 			<p>
 				{this.strings.blockerText}<br/>
 				<a onclick:frontend={() => use("no-datex", this) && this.reopenAuthWindow()}>
