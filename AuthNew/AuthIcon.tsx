@@ -4,9 +4,15 @@ import { Component } from "uix/components/Component.ts";
 import { Datex } from "datex-core-legacy/mod.ts";
 import { include } from "uix/base/decorators.ts";
 
+/**
+ * Note -> why is server responding with text/scss instead of css?
+ * for <link rel={"stylesheet"} href="./Auth.scss"/>
+ * FIXME TODO
+ */
 @template(function(this: AuthIcon) {
 	return <>
 		<link rel={"stylesheet"} href="./Auth.css"/>
+		
 		<a class="toggle">
 			<div class="spinner"></div>
 			<img class="toggle" src="https://cdn.unyt.org/unyt-resources/logos/unyt/round-dark-background.png"/>
