@@ -6,7 +6,7 @@ import { include } from "uix/base/decorators.ts";
 
 @template(function(this: AuthIcon) {
 	return <>
-		<link rel={"stylesheet"} href="./Auth.scss"/>
+		<link rel={"stylesheet"} href="./Auth.css"/>
 		<a class="toggle">
 			<div class="spinner"></div>
 			<img class="toggle" src="https://cdn.unyt.org/unyt-resources/logos/unyt/round-dark-background.png"/>
