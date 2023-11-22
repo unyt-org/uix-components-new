@@ -15,6 +15,7 @@ body.disable-scroll {
 	align-items: center;
 	flex-direction: column;
 	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
 	color: white;
 	img {
 		max-width: 140px;
