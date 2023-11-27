@@ -5,11 +5,11 @@ import { Datex } from "unyt_core/datex.ts";
 import { unsafeHTML } from "uix/html/unsafe-html.ts";
 declare const marked: any;
 
-@blankTemplate<{}, Datex.RefOrValue<string>>(({children}) => {
+@blankTemplate<{value?: Datex.RefOrValue<string>}, Datex.RefOrValue<string>>(({value, children}) => {
 	return <>
 		{always(()=>
-			unsafeHTML(marked(val(children[0])?.replaceAll("\n", "\\n") || ''))
+			unsafeHTML(marked((value ?? val(children[0]))?.replaceAll("\n", "\\n") || ''))
 		)}
 	</>
 })
-export default class Markdown extends Component {}
+export default class Markdown extends Component<{value?: Datex.RefOrValue<string>}, Datex.RefOrValue<string>> {}
