@@ -3,6 +3,7 @@ import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import { Datex } from "datex-core-legacy/mod.ts";
 import { include } from "uix/base/decorators.ts";
+import { Path } from "uix/utils/path.ts";
 
 /**
  * Note -> why is server responding with text/scss instead of css?
@@ -11,7 +12,7 @@ import { include } from "uix/base/decorators.ts";
  */
 @template(function(this: AuthIcon) {
 	return <>
-		<link rel={"stylesheet"} href="./Auth.css"/>
+		<link rel={"stylesheet"} href={new Path("./Auth.css")}/>
 		
 		<a class="toggle">
 			<div class="spinner"></div>
