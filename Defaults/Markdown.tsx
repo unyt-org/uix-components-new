@@ -8,7 +8,15 @@ declare const marked: any;
 @blankTemplate<{value?: Datex.RefOrValue<string>}, Datex.RefOrValue<string>>(({value, children}) => {
 	return <>
 		{always(()=>
-			unsafeHTML(marked((val(value ?? children[0]))?.replaceAll("\n", "\\n") || ''))
+			value ?
+				[...unsafeHTML(`<div>${marked(val(value))}</div>`).children]
+				: [
+					...(children || []).map(child => 
+						child instanceof HTMLElement ? 
+							child : 
+							[...unsafeHTML(`<div>${marked(val(child)?.replaceAll("\\n", "\n"))}</div>`).children]
+					)
+				].flat()
 		)}
 	</>
 })
