@@ -5,11 +5,6 @@ import { Datex } from "datex-core-legacy/mod.ts";
 import { include } from "uix/base/decorators.ts";
 import { Path } from "uix/utils/path.ts";
 
-/**
- * Note -> why is server responding with text/scss instead of css?
- * for <link rel={"stylesheet"} href="./Auth.scss"/>
- * FIXME TODO
- */
 @template(function(this: AuthIcon) {
 	return <>
 		<link rel={"stylesheet"} href={new Path("./Auth.css")}/>
@@ -25,7 +20,7 @@ import { Path } from "uix/utils/path.ts";
 		<iframe id="iframe" allow="clipboard-write" allowtransparency="true"/>
 	</>
 })
-export class AuthIcon extends Component {
+export class AuthIcon extends Component<{__host?: string}> {
 	@id @frontend private declare iframe: HTMLIFrameElement;
 
 	@frontend private declare blockerElem: HTMLDivElement;
@@ -103,7 +98,7 @@ export class AuthIcon extends Component {
 		console.debug("Loading unyt Auth frame...");
 		this.classList.toggle("expanded", false);
 		setTimeout(()=>{
-			this.iframe.src = "https://auth-content.unyt.org"//"http://localhost:9999";
+			this.iframe.src = this.options.__host ?? "https://auth-content.unyt.org";
 		}, 300);
 	}
 
