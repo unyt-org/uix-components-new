@@ -41,6 +41,7 @@ export class AuthIcon extends Component {
 			document.body.removeChild(this.blockerElem);
 		document.body.classList.toggle("disable-scroll", this.isBlockerActive());
 	}
+
 	@frontend
 	isBlockerActive() {
 		return this.blockerElem?.isConnected;
@@ -76,6 +77,9 @@ export class AuthIcon extends Component {
 		await import("datex-core-legacy/iframes/iframe-com-interface.ts");
 		await import("./interfaces/WindowInterface.ts");
 		await import("./interfaces/AppInterface.ts");
+
+		await Datex.Supranet.connectAnonymous();
+
 		const {jsx:_jsx, jsxs:_jsxs, Fragment:_Fragment} = await import("uix/jsx-runtime");
 		// @ts-ignore $
 		globalThis._jsx = _jsx;
@@ -171,7 +175,14 @@ export class AuthIcon extends Component {
 	comInterface?: Datex.ComInterface;
 
 	@frontend
-	private onLoad() {
+	private async onLoad() {
+		if (this.comInterface)
+			Datex.InterfaceManager.removeInterface(this.comInterface);
+
+		if (!Datex.Supranet.connected) {
+			console.info("Main page is not connected to Supranet. Waiting for connection...");
+			await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
+		}
 		if (this.comInterface)
 			Datex.InterfaceManager.removeInterface(this.comInterface);
 
