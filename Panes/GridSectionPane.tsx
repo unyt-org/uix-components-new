@@ -1,4 +1,3 @@
-import { UIX, IEL } from "uix/uix.ts";
 import type { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 
