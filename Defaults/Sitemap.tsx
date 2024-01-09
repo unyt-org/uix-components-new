@@ -3,9 +3,9 @@ import { Component } from "uix/components/Component.ts";
 import { Datex, map } from "unyt_core";
 import { template } from "uix/html/template.ts";
 import { use } from "uix/base/decorators.ts";
-import { Icon } from "unyt/uix-components-new/Defaults/Icon.tsx";
+import { Icon } from "../Defaults/Icon.tsx";
 import { UIX } from "uix";
-import ToggleSwitch from "unyt/uix-components-new/Defaults/ToggleSwitch.tsx";
+import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 
 @template(function(this: Sitemap) {
 	return <div>
