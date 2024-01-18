@@ -1,6 +1,4 @@
 :host {
-	display: flex;
-	align-items: flex-start;
 	position: fixed!important;
 	width: 100%;
 	height: 70px;
@@ -27,7 +25,6 @@
 		margin-left: 20px;
 		flex: 1;
 		color: var(--text);
-
 		width: 90%;
 	}
 	.navigation:hover,
@@ -84,13 +81,22 @@
 		max-height: fit-content;
 		opacity: 1;
 	}
+	#body.active .buttons {
+		margin-top: 10px;
+	}
 	#body.active .navigation {
 		font-size: large;
+		opacity: 0.6;
+		text-decoration: none;
+		&:hover {
+			opacity: 1;
+		}
 	}
 
-	#body uix-anchor {
+	#body a {
 		display: block;
 		margin: auto;
+		margin-left: 20px;
 		width: calc(100vw - 2*20px)!important;
 	}
 	@media screen and (min-width: 770px) {
