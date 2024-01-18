@@ -1,6 +1,15 @@
 :host {
 	display: flex;
 	align-items: flex-start;
+	position: fixed!important;
+	width: 100%;
+	height: 70px;
+	z-index: 10;
+	top: 0!important;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4)!important;
+	transition: top 0.1s linear;
+	opacity: 1!important;
+	
 	&.hidden {
 		opacity: 0!important;
 		top: -70px!important;
