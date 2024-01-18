@@ -9,11 +9,6 @@ export val refs = [
 		link: https://github.com/unyt-org
 	},
 	{
-		name: 'GitLab',
-		icon: 'fa-brands fa-gitlab',
-		link: https://gitlab.com/unyt
-	},
-	{
 		name: 'Discord',
 		icon: 'fa-brands fa-discord',
 		link: https://unyt.org/discord
