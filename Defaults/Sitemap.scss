@@ -56,12 +56,12 @@
 			.title {
 				font-size: large;
 				margin-bottom: 0px;
+				font-weight: 500;
 			}
 			a {
 				font-size: medium;
 				color: var(--text)!important;
 				opacity: 0.4;
-				font-weight: 500;
 				&:hover {
 					text-decoration: underline!important;
 					opacity: 0.8;
