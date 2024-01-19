@@ -85,7 +85,7 @@ export class Sitemap extends Component<Component.Options> {
 			return;
 		this.themeThreshold = true;
 		setTimeout(()=>(this.themeThreshold = false), 300);
-		UIX.Theme.setMode(UIX.Theme.mode.val === "light" ? "dark" : "light");
+		UIX.Theme.setMode(UIX.Theme.mode === "light" ? "dark" : "light");
 		
 		//this.apperanceToggle!.parentElement!.querySelector("span")!.innerText = `Mode: ${UIX.Theme.mode.val === "dark" ? "Dark": "Light"}`;
 	}
@@ -93,7 +93,7 @@ export class Sitemap extends Component<Component.Options> {
 	override onCreate() {
 		//this.languageSelector.querySelector(".dropdown")!.prepend(<Icon name="fa-globe"/>);
 	
-		this.$.appearance = UIX.Theme.mode.val === "dark" ? this.strings.theme_dark : this.strings.theme_light;
+		this.$.appearance = UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light;
 		// this.settingsRow = <div>{this.languageSelector}</div>;
 		// this.settingsRow = <div>{this.languageSelector}<div><span>{this.$$.appearance}</span>{this.apperanceToggle}</div></div>;
 		this.createSections();
