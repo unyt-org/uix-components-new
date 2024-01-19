@@ -38,7 +38,7 @@ export default class ToggleSwitch extends Component<Component.Options & {
 
 	@frontend
 	public onToggle(callback: (value: boolean)=>void) {
-		this.addEventListener("toggle", (e: ToggleEvent) => callback(e.detail?.checked ?? this.checked));
+		this.addEventListener("toggle", (e: ToggleEvent) => callback(this.checked));
 	}
 
 	@frontend
