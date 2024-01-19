@@ -17,15 +17,15 @@ export class TourFooter extends Component<{ reverseOrder?: boolean }> {
 			<div>
 				<h1>
 					<span style={`--content:'${this.strings.keyword1}.';--start-color:#0075e2;--end-color:#00cdc6`}>
-						<span>{this.strings.keyword1}.</span>
+						<span>{this.strings.keyword1.toString()}.</span>
 					</span>
 					&nbsp;
 					<span style={`--content:'${this.strings.keyword2}.';--start-color:#7025bc;--end-color:#f10079`}>
-						<span>{this.strings.keyword2}.</span>
+						<span>{this.strings.keyword2.toString()}.</span>
 					</span>
 					&nbsp;
 					<span style={`--content:'${this.strings.keyword3}.';--start-color:#f84848;--end-color:#edc228`}>
-						<span>{this.strings.keyword3}.</span>
+						<span>{this.strings.keyword3.toString()}.</span>
 					</span>
 				</h1>
 				<Markdown value={this.strings.description}/>
