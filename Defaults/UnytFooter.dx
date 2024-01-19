@@ -21,7 +21,7 @@ export val refs = [
 	{
 		name: 'LinkedIn',
 		icon: 'fa-brands fa-linkedin',
-		link: https://linkedin.com/in/unyt
+		link: https://linkedin.com/company/unyt-org
 	},
 	{
 		name: 'Instagram',
