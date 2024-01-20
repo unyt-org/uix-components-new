@@ -29,6 +29,7 @@
 		height: 1em;
 	}
 
+	/*
 	@include mode(dark) {
 		#sitemapTitle>img {
 			filter: grayscale(1) brightness(100);
@@ -40,6 +41,7 @@
 			filter: grayscale(1) brightness(0);
 		}
 	}
+	*/
 
 
 
@@ -92,7 +94,7 @@
 		transition: color 0.2s;
 	}
 	#sitemapLink:hover {
-		color: var(--text_highlight)!important
+		color: var(--text_highlight)!important;
 	}
 
 	#settingsRow {
