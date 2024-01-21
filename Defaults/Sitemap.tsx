@@ -73,7 +73,7 @@ export class Sitemap extends Component<Component.Options> {
 		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => this?.onScrollTop?.());
 		await import("uix");
 		
-		this.apperanceToggle.checked = UIX.Theme.mode === "dark";
+		this.apperanceToggle.setChecked(UIX.Theme.mode === "dark");
 		this.apperanceToggle.onToggle(e => {
 			UIX.Theme.setMode(e ? "dark" : "light");
 		})
