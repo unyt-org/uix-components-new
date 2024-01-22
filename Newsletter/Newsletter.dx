@@ -1,0 +1,41 @@
+use localtext from #std;
+
+# constants --------------------------------
+val tos_url = https://unyt.org/terms-of-service;
+val privacy_url = https://unyt.org/privacy;
+
+# strings ----------------------------------
+export val strings = {
+	title: localtext {
+		en: 'Subscribe to the unyt newsletter',
+		de: 'Abonniere den unyt Newsletter'
+	},
+	tos: localtext {
+		en: 'By subscribing to the newsletter, you agree to the [Terms and Conditions]\((tos_url)) and our [Privacy Policy]\((privacy_url)).',
+		de: 'Durch das Abonnieren des Newsletters stimmst du unseren [Allgemeinen Geschäftsbedingungen]\((tos_url)) und unserer [Datenschutzrichtlinie]\((privacy_url)) zu.'
+	},
+	description: localtext {
+		en: 'Get updates and opportunities from across the unyt organization and community.',
+		de: 'Erhalte Neuigkeiten aus der unyt-Organisation und Community.'
+	},
+	subscribe: localtext {
+		en: 'Subscribe',
+		de: 'Abonnieren'
+	},
+	mailPlaceholder: localtext {
+		en: 'Your e-mail address',
+		de: 'Deine E-Mail-Adresse'
+	},
+	thankYou: localtext {
+		en: 'Thanks',
+		de: 'Danke'
+	},
+	error: localtext {
+		en: "Sorry, we are experiencing some issues with newsletter subscriptions.",
+		de: "Entschuldige, wir haben aktuell Probleme mit Newsletter-Anmeldungen."
+	},
+	tryAgain: localtext {
+		en: "Try again.",
+		de: "Versuche es hier."
+	}
+}
