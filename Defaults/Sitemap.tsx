@@ -3,9 +3,9 @@ import { Component } from "uix/components/Component.ts";
 import { Datex, map } from "unyt_core";
 import { template } from "uix/html/template.ts";
 import { use } from "uix/base/decorators.ts";
-import { Icon } from "unyt/uix-components-new/Defaults/Icon.tsx";
+import { Icon } from "../Defaults/Icon.tsx";
 import { UIX } from "uix";
-import ToggleSwitch from "unyt/uix-components-new/Defaults/ToggleSwitch.tsx";
+import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 
 @template(function(this: Sitemap) {
 	return <div>
@@ -73,7 +73,7 @@ export class Sitemap extends Component<Component.Options> {
 		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => this?.onScrollTop?.());
 		await import("uix");
 		
-		this.apperanceToggle.checked = UIX.Theme.mode === "dark";
+		this.apperanceToggle.setChecked(UIX.Theme.mode === "dark");
 		this.apperanceToggle.onToggle(e => {
 			UIX.Theme.setMode(e ? "dark" : "light");
 		})
@@ -85,7 +85,7 @@ export class Sitemap extends Component<Component.Options> {
 			return;
 		this.themeThreshold = true;
 		setTimeout(()=>(this.themeThreshold = false), 300);
-		UIX.Theme.setMode(UIX.Theme.mode.val === "light" ? "dark" : "light");
+		UIX.Theme.setMode(UIX.Theme.mode === "light" ? "dark" : "light");
 		
 		//this.apperanceToggle!.parentElement!.querySelector("span")!.innerText = `Mode: ${UIX.Theme.mode.val === "dark" ? "Dark": "Light"}`;
 	}
@@ -93,7 +93,7 @@ export class Sitemap extends Component<Component.Options> {
 	override onCreate() {
 		//this.languageSelector.querySelector(".dropdown")!.prepend(<Icon name="fa-globe"/>);
 	
-		this.$.appearance = UIX.Theme.mode.val === "dark" ? this.strings.theme_dark : this.strings.theme_light;
+		this.$.appearance = UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light;
 		// this.settingsRow = <div>{this.languageSelector}</div>;
 		// this.settingsRow = <div>{this.languageSelector}<div><span>{this.$$.appearance}</span>{this.apperanceToggle}</div></div>;
 		this.createSections();

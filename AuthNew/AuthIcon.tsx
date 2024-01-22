@@ -4,6 +4,7 @@ import { Component } from "uix/components/Component.ts";
 import { Datex } from "datex-core-legacy/mod.ts";
 import { include } from "uix/base/decorators.ts";
 import { Path } from "uix/utils/path.ts";
+import { UIX } from "uix";
 
 @template(function(this: AuthIcon) {
 	return <>
@@ -135,7 +136,10 @@ export class AuthIcon extends Component<{__host?: string}> {
 	@frontend
 	private onResize() {
 		if (this.iFrameInterface)
-			this.iFrameInterface.setAppearance(globalThis.innerWidth > globalThis.innerHeight ? "desktop" : "mobile")
+			this.iFrameInterface.setAppearance({
+				device: globalThis.innerWidth > globalThis.innerHeight ? "desktop" : "mobile",
+				mode: UIX.Theme.mode
+			})
 	}
 
 	@frontend

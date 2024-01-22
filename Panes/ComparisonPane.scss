@@ -5,7 +5,7 @@
 	}
 	table, tbody {
 		td {
-			uix-text {
+			uix-markdown {
 				em, strong {
 					font-weight: normal!important;
 					font-style: normal!important;
@@ -34,7 +34,7 @@
 		&>div {
 			line-height: 1;
 		}
-		uix-text {
+		uix-markdown {
 			font-size: x-large;
 			@media screen and (max-width: 900px) {
 				font-size: medium;
@@ -169,7 +169,7 @@
 		transition: opacity 0.2s;
 		&:hover {
 			opacity: 1;
-			&>uix-text {
+			&>uix-markdown {
 				display: flex!important;
 				opacity: 1;
 			}
@@ -180,7 +180,7 @@
 			font-weight: var(--fa-style, 900);
 			content: "\f129";
 		}
-		&>uix-text {
+		&>uix-markdown {
 			font-size: medium;
 			margin-top: 0;
 			margin-bottom: 0;

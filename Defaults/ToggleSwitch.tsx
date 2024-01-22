@@ -28,17 +28,19 @@ export default class ToggleSwitch extends Component<Component.Options & {
 	@frontend declare options;
 
 	@frontend
-	public set checked(val: boolean) {
+	public setChecked(val: boolean) {
 		if (this.switch)
 			this.switch.checked = val;
 	}
-	public get checked(): boolean {
+
+	@frontend
+	public getChecked(): boolean {
 		return this.switch?.checked;
 	}
 
 	@frontend
 	public onToggle(callback: (value: boolean)=>void) {
-		this.addEventListener("toggle", (e: ToggleEvent) => callback(e.detail?.checked ?? this.checked));
+		this.addEventListener("toggle", (e: ToggleEvent) => callback(this.getChecked()));
 	}
 
 	@frontend
@@ -49,7 +51,7 @@ export default class ToggleSwitch extends Component<Component.Options & {
 			e.stopImmediatePropagation();
 			this.dispatchEvent(new CustomEvent("toggle", {
 				detail: {
-					checked: this.checked,
+					checked: this.getChecked(),
 					originalEvent: e
 				}
 			}));

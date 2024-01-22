@@ -1,7 +1,7 @@
 import { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
-import Markdown from "unyt/components/Markdown.tsx";
+import Markdown from "../Defaults/Markdown.tsx";
 
 type AppDownloadPaneOptions = {
 	header: string,

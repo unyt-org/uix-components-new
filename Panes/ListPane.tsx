@@ -1,7 +1,7 @@
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
-import Markdown from "unyt/components/Markdown.tsx";
-import { Icon } from '../Defaults/Icon';
+import Markdown from "../Defaults/Markdown.tsx";
+import { Icon } from '../Defaults/Icon.tsx';
 type ListPaneOptions = {
 	title: string,
 	description?: string,

@@ -9,11 +9,6 @@ export val refs = [
 		link: https://github.com/unyt-org
 	},
 	{
-		name: 'GitLab',
-		icon: 'fa-brands fa-gitlab',
-		link: https://gitlab.com/unyt
-	},
-	{
 		name: 'Discord',
 		icon: 'fa-brands fa-discord',
 		link: https://unyt.org/discord
@@ -26,7 +21,7 @@ export val refs = [
 	{
 		name: 'LinkedIn',
 		icon: 'fa-brands fa-linkedin',
-		link: https://linkedin.com/in/unyt
+		link: https://linkedin.com/company/unyt-org
 	},
 	{
 		name: 'Instagram',
