@@ -59,10 +59,11 @@ export class NewsletterNew extends Component<Component.Options> {
 		const url = new URL("https://newsletter.unyt.org/subscribe");
 		url.search = new URLSearchParams(data).toString();
 		this.error.classList.add("hidden");
-		const res = await fetch(url, {cache: "no-cache"});
 		try {
-			if (!res.ok && !res.redirected)
+			const isOnline = await fetch("https://newsletter.unyt.org", {cache: "no-cache"});
+			if (!isOnline.ok)
 				throw new Error("Invalid status or not reachable");
+			try { await fetch(url, {cache: "no-cache"}); } catch (e) {}
 			await new Promise((r) => setTimeout(r, 500));
 			this.classList.add("active");
 		} catch (e) {
