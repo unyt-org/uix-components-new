@@ -1,0 +1,98 @@
+@property --bg-angle {
+	inherits: false;
+	initial-value: 0deg;
+	syntax: "<angle>";
+}
+:host {
+	@keyframes spin {
+		to {
+			--bg-angle: 360deg;
+		}
+	}
+	font-size: 18px;
+	position: relative;
+	iframe {
+		&.left {
+			left: -38px!important;
+		}
+		&.right {
+			right: -38px!important;
+		}
+	}
+	.auth-button {
+		position: relative;
+		&::before {
+			content: "";
+			width: calc(100% + 4px);
+			height: calc(100% + 4px);
+			z-index: -1;
+			transition: transform 0.2s, opacity 0.2s;
+			position: absolute;
+			animation: spin 2.5s infinite linear;
+			border-radius: 6px;
+			background:
+				conic-gradient(
+					from var(--bg-angle) in oklch longer hue,
+					red 0 0
+				)
+				border-box;
+			border: inset 4px transparent;
+		}
+		background-color: var(--auth-bg);
+		color: var(--auth-color);
+		display: flex;
+		border-radius: 6px;
+		border: 1px solid var(--auth-border);
+		gap: 8px;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 10px!important;
+		font-weight: 500;
+		&[data-shape="rect"] {
+			padding: 6px 10px!important;
+		}
+		&[data-shape="circle"], &[data-shape="square"] {
+			width: 44px;
+			height: 44px;
+			padding: 0!important;
+		}
+		&[data-shape="circle"] {
+			border-radius: 22px;
+			&::before {
+				border-radius: 22px;
+			}
+		}
+		&>div {
+			width: 30px;
+			height: 30px;
+			img {
+				width: 100%;
+			}
+		}
+		&>span {
+			flex: 1;
+		}
+		transition: box-shadow 0.2s, transform 0.2s, filter 0.2s;
+		user-select: none;
+		* {
+			user-select: none;
+		}
+		filter: none!important;
+	}
+	&.connected .auth-button::before {
+		display: none!important;
+		content: none!important;
+		opacity: 0;
+	}
+	&.connected:not(.expanded) {
+		.auth-button:hover {
+			color: rgba(255, 255, 255, 1);
+			box-shadow: 0 3px 15px rgba(139, 139, 139, 0.4);
+			filter: brightness(1.2)!important;
+		}
+		.auth-button:active {
+			transform: scale(0.98);
+		}
+	}
+}

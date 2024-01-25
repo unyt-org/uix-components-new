@@ -5,7 +5,8 @@ export class IFrameInterface {
 	static async isExpanded(): Promise<boolean> {}
 	static setAppearance(_appearance: {
 		device: "desktop" | "mobile",
-		mode: "dark" | "light"
+		mode: "dark" | "light",
+		alignment: "left" | "right" | "center"
 	}) {}
 	static async collapse() { }
 	static async expand() { }

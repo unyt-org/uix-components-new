@@ -1,0 +1,12 @@
+use localtext from #std;
+
+export val strings = {
+	blockerText: localtext {
+		en: "You can not see the secure browser window of unyt Auth? Here you can reopen the window and finish your authentication.",
+		de: "Das sichere Browserfenster von unyt Auth ist nicht sichtbar? Hier kannst du das Fenster erneut öffnen und die Authentifizierung abschließen."
+	},
+	continue: localtext {
+		en: "Continue",
+		de: "Weiter"
+	}
+}

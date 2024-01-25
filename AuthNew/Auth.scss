@@ -1,7 +1,36 @@
 body.disable-scroll {
 	overflow: hidden!important;
+	height: 100%;
 }
-#blocker {
+body[data-color-scheme="light"] uix-auth-component {
+	--auth-bg: rgb(255, 255, 255);
+	--auth-border: #747775;
+	--auth-color: #1f1f1f;
+}
+body[data-color-scheme="dark"] uix-auth-component {
+	--auth-bg: #131314;
+	--auth-border: #747775;
+	--auth-color: #e3e3e3;
+}
+uix-auth-component, uix-auth-component light-root {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji";
+	&[data-appearance="dark"] {
+		--auth-bg: #131314;
+		--auth-border: #747775;
+		--auth-color: #e3e3e3;
+	}
+	&[data-appearance="light"] {
+		--auth-bg: rgb(255, 255, 255);
+		--auth-border: #747775;
+		--auth-color: #1f1f1f;
+	}
+	&[data-appearance="neutral"] {
+		--auth-bg: #F2F2F2!important;
+		--auth-border: transparent!important;
+		--auth-color: #1F1F1F!important;
+	}
+}
+#auth-blocker {
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji";
 	position: fixed;
 	height: 100%;
@@ -15,7 +44,6 @@ body.disable-scroll {
 	align-items: center;
 	flex-direction: column;
 	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
 	color: white;
 	img {
 		max-width: 140px;

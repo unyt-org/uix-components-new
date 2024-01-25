@@ -1,0 +1,8 @@
+use localtext from #std;
+
+export val customStrings = {
+	continue: localtext {
+		en: "Continue with unyt Auth",
+		de: "Weiter mit unyt Auth"
+	}
+}
