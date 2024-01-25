@@ -2,6 +2,9 @@ body.disable-scroll {
 	overflow: hidden!important;
 	height: 100%;
 }
+body {
+	overflow-x: hidden;
+}
 body[data-color-scheme="light"] uix-auth-component {
 	--auth-bg: rgb(255, 255, 255);
 	--auth-border: #747775;
