@@ -7,7 +7,7 @@ import { Icon } from "../Defaults/Icon.tsx";
 
 @template(function(this: UnytFooter) {
 	return <>
-		<div class="copyright">&copy; <span>2023 unyt.org</span></div>
+		<div class="copyright">&copy; <span>2024 unyt.org</span></div>
 		<div class="tos">
 			<a href="https://unyt.org/terms-of-service" target="_blank">{this.strings.terms}</a>
 			<a href="https://unyt.org/privacy" target="_blank">{this.strings.privacy}</a>
