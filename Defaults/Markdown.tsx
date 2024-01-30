@@ -6,7 +6,7 @@ import { unsafeHTML } from "uix/html/unsafe-html.ts";
 import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
 
 @blankTemplate<{value?: Datex.RefOrValue<string>, imageBase?: URL, base?: URL}, Datex.RefOrValue<string>>(({value, children, imageBase, base}) => {
-	marked.use(baseUrl(base?.toString() ?? ""))
+	const options = baseUrl(base?.toString() ?? "");
 	const updatePath = (element: Node) => {
 		if (element instanceof HTMLImageElement || element?.nodeName?.toLowerCase() === 'img')
 			element.setAttribute?.("src", toBaseURL(element.getAttribute("src"), imageBase as URL));
@@ -23,12 +23,12 @@ import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
 	return <>
 		{
 			value ?
-				resolvePaths([...unsafeHTML(`<div>${marked.parse(val(value), undefined)}</div>`).children])
+				resolvePaths([...unsafeHTML(`<div>${marked.parse(val(value), options)}</div>`).children])
 				: [
 					...(children || []).map(child => 
 						child instanceof HTMLElement ? 
 							child : 
-							resolvePaths([...unsafeHTML(`<div>${marked.parse(val(child)?.replaceAll("\\n", "\n"), undefined)}</div>`).children])
+							resolvePaths([...unsafeHTML(`<div>${marked.parse(val(child)?.replaceAll("\\n", "\n"), options)}</div>`).children])
 					)
 				].flat()
 		}
