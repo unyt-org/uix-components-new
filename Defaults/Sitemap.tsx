@@ -1,6 +1,6 @@
 
 import { Component } from "uix/components/Component.ts";
-import { Datex, map } from "unyt_core";
+import { Datex } from "unyt_core";
 import { template } from "uix/html/template.ts";
 import { use } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";
@@ -10,7 +10,7 @@ import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 @template(function(this: Sitemap) {
 	return <div>
 		<div id="sitemapTitle">
-			<img src={map(UIX.Theme.mode, {dark: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-light-transparent-3.svg', light: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-dark-transparent-3.svg'})}></img>
+			<img src={{dark: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-light-transparent-3.svg', light: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-dark-transparent-3.svg'}[UIX.Theme.mode]}></img>
 		</div>
 		<a title='unyt.org' id="sitemapLink">
 			<Icon name="fa-chevron-up"/>
@@ -23,7 +23,7 @@ import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 			<div>
 				<ToggleSwitch
 					size={38}
-					label={always(()=>UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light)}
+					label={UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light}
 					id="apperanceToggle"/>
 			</div>
 		</div>

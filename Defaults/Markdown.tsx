@@ -21,7 +21,7 @@ import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
 		return elements;
 	}
 	return <>
-		{always(()=>
+		{
 			value ?
 				resolvePaths([...unsafeHTML(`<div>${marked.parse(val(value), undefined)}</div>`).children])
 				: [
@@ -31,7 +31,7 @@ import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
 							resolvePaths([...unsafeHTML(`<div>${marked.parse(val(child)?.replaceAll("\\n", "\n"), undefined)}</div>`).children])
 					)
 				].flat()
-		)}
+		}
 	</>
 })
 export default class Markdown extends Component<{value?: Datex.RefOrValue<string>, base?: URL | string, imageBase?: URL | string}, Datex.RefOrValue<string>> {
