@@ -1,7 +1,7 @@
 // deno-lint-ignore-file require-await
 import { endpoint_default, expose, namespace } from "unyt_core/datex_all.ts";
 @endpoint_default @namespace
-export class WindowInterface {
+export class WindowAppInterface {
 	@expose static async hello() { }
 
 	@expose static async requestCollapse() {

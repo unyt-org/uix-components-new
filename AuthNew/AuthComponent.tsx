@@ -1,9 +1,9 @@
-// deno-lint-ignore-file no-var no-async-promise-executor
 import { Path } from "uix/utils/path.ts";
 import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
 import { Datex } from "unyt_core/datex.ts";
 import { UIX } from "uix";
+import { communicationHub } from "unyt_core/network/communication-hub.ts";
 
 declare global {
 	var _jsx: unknown;
@@ -15,6 +15,7 @@ declare global {
 	return <light-root data-appearance={this.options.appearance ?? "auto"}>
 		<link rel={"stylesheet"} href={new Path("./Auth.css")}/>
 		<div id="backdrop"/>
+
 		<slot tabindex="1" name="content"/>
 	</light-root>
 })
@@ -25,7 +26,8 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	@frontend eventListenersSet = false;
 	@frontend protected declare blockerElem: HTMLDivElement;
 	@include("./AuthComponent.dx") @frontend declare strings: { [ key: string ]: string};
-	@frontend comInterface?: Datex.ComInterface;
+
+	// @ts-ignore $
 	@frontend declare iFrameInterface: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
 
 	@frontend declare _logger: Datex.Logger;
@@ -41,6 +43,8 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.createBlockerElement();
 		this.iframe.setAttribute("allow", "clipboard-write");
 		this.iframe.setAttribute("sandbox", "allow-modals allow-forms allow-popups allow-scripts allow-same-origin");
+		
+		
 		this.iframe.onload = () => this.onLoad();
 		this.iframe.onerror = this.iframe.onabort = () => this.onError();
 		this.load();
@@ -114,7 +118,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		const isVisible = (elem: HTMLElement) => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
 		globalThis.addEventListener("click", async (event: Event) => {
 			const isExpanded = await this.iFrameInterface.isExpanded();
-			if (!this.isBlockerActive() && this.iFrameInterface && isExpanded && event.target && !this.contains(event.target) && isVisible(this)) {
+			if (!this.isBlockerActive() && this.iFrameInterface && isExpanded && event.target && !this.contains(event.target as never) && isVisible(this as unknown as HTMLElement)) {
 				event.stopImmediatePropagation();
 				event.preventDefault();
 				this.collapse();
@@ -171,57 +175,30 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	@frontend
 	private async onLoad() {
-		if (this.comInterface)
-			Datex.InterfaceManager.removeInterface(this.comInterface);
-
 		if (!Datex.Supranet.connected) {
 			this._logger.warn("Main page is not connected to Supranet. Waiting for connection...");
 			await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
 		}
-		if (this.comInterface)
-			Datex.InterfaceManager.removeInterface(this.comInterface);
+		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
 
 		this._logger.success("Auth Comp (iframe) was loaded");
 		this._logger.info("Initializing iframe communication interface...");
-		Datex.InterfaceManager.connect("iframe", undefined, [this.iframe], undefined, (interf) => {
-			this._logger.success("Interface was connected");
-			this._logger.info("Waiting for iframe's response...");
-			this.comInterface = interf;
-			interf.onEndpointSet = async (endpoint: Datex.Endpoint) => {
-				this._logger.success(`Got a response from the iframe: ${endpoint?.main}`);
-				this._logger.info(`Getting interface from iframe...`);
-				try {
-					this.iFrameInterface = await datex`${endpoint}.IFrameInterface`;
-				} catch(e) {
-					this._logger.warn(`Could not get interface of iframe. Retrying...`, e);
-				}
-				if (!this.iFrameInterface) {
-					await new Promise(async (resolve, reject) => {
-						endpoint.online.observe((isOnline)=>{
-							if (isOnline)
-								resolve(true);
-						});
-						if (await endpoint.isOnline())
-							return resolve(true);
-						setTimeout(()=>reject(false), 15_000);
-					});
-					for (let i=0; i<3; i++) {	
-						try {
-							this.iFrameInterface = await datex`${endpoint}.IFrameInterface`;
-							if (this.iFrameInterface)
-								break;
-						} catch (e) {
-							this._logger.warn(`Could not get interface of iframe. Retrying...`, e);
-						}
-					}
-				}
-				if (!this.iFrameInterface) {
-					this._logger.error(`Could not get interface from endpoint ${endpoint}`);
-					throw new Error("Could not get interface!");
-				}
-				this.onConnect();
-			}
-		});
+		const endpoint = await WindowInterface.bindIFrame(this.iframe);
+		if (!endpoint)
+			return this._logger.warn(`Could not connect to interface. Aborting...`);
+		this._logger.success("Interface was connected. Got endpoint", endpoint);
+		this._logger.info(`Getting interface from iframe...`);
+
+		try {
+			this.iFrameInterface = await datex`${endpoint}.IFrameInterface`;
+		} catch(e) {
+			this._logger.warn(`Could not get interface of iframe. Retrying...`, e);
+		}
+		if (!this.iFrameInterface) {
+			this._logger.error(`Could not get interface from endpoint ${endpoint}`);
+			throw new Error("Could not get interface!");
+		}
+		this.onConnect();
 	}
 
 	@frontend
@@ -242,13 +219,14 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	async loadDependencies() {
 		await import("uix");
 		await import("datex-core-legacy/iframes/iframe-com-interface.ts");
-		await import("./interfaces/WindowInterface.ts");
+		await import("./interfaces/WindowAppInterface.ts");
 		await import("./interfaces/AppInterface.ts");
+
 		this.strings = (await datex.get<{strings: any}>("./AuthComponent.dx")).strings;
 		const {jsx:_jsx, jsxs:_jsxs, Fragment:_Fragment} = await import("uix/jsx-runtime");
-		globalThis._jsx = _jsx;
-		globalThis._jsxs = _jsxs;
-		globalThis._Fragment = _Fragment;
+		// globalThis._jsx = _jsx;
+		// globalThis._jsxs = _jsxs;
+		// globalThis._Fragment = _Fragment;
 		await Datex.Supranet.connectAnonymous();
 	}
 
