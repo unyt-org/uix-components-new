@@ -5,11 +5,6 @@ import { Datex } from "unyt_core/datex.ts";
 import { UIX } from "uix";
 import { communicationHub } from "unyt_core/network/communication-hub.ts";
 
-declare global {
-	var _jsx: unknown;
-	var _jsxs: unknown;
-	var _Fragment: unknown;
-}
 
 @template(function(this: AuthComponent) {
 	return <light-root data-appearance={this.options.appearance ?? "auto"}>
@@ -224,9 +219,6 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 		this.strings = (await datex.get<{strings: any}>("./AuthComponent.dx")).strings;
 		const {jsx:_jsx, jsxs:_jsxs, Fragment:_Fragment} = await import("uix/jsx-runtime");
-		// globalThis._jsx = _jsx;
-		// globalThis._jsxs = _jsxs;
-		// globalThis._Fragment = _Fragment;
 		await Datex.Supranet.connectAnonymous();
 	}
 
@@ -257,18 +249,18 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	}
 
 	@frontend
-	protected positionIframe(): "center" | "left" | "right" {
+	protected positionIframe() {
 		return this.autoPositionIframe();
 	}
 
 	@frontend
-	protected autoPositionIframe() {
+	protected autoPositionIframe(): "center" | "left" | "right" {
 		if (window.innerWidth < 500) {
 			this.iframe.setAttribute("data-alignment", "center")
 			return "center";
 		}
 
-		let alignment = "left";
+		let alignment: "right" | "left" | "center" = "left";
 		this.iframe.setAttribute("data-alignment", alignment);
 		let iframePosition = this.iframe.getBoundingClientRect();
 		let iframeRight = iframePosition.x + iframePosition.width;
@@ -287,38 +279,5 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			this.iframe.setAttribute("data-alignment", alreadyAligned ? "center" : "left-fixed");
 		}
 		return alignment;
-
-		// return;
-		// const parent = (this as unknown as HTMLElement).getBoundingClientRect();
-		// const parentX = parent.x;
-		// const animationPercentage = 0.2;
-		// const animation = 
-		// 	parentX < globalThis.innerWidth * animationPercentage ?
-		// 	"left" :
-		// 	parentX + parent.width > globalThis.innerWidth * (1 - animationPercentage) ?
-		// 	"right" : null;
-		// const alignment = parentX < globalThis.innerWidth / 2;
-		// this.iframe.classList.toggle("center", false);
-		// this.iframe.classList.toggle("left", alignment);
-		// this.iframe.classList.toggle("right", !alignment);
-		
-		// const iframeRect = this.iframe.getBoundingClientRect();
-		// const iframeX = iframeRect.x;
-		// const centered = globalThis.innerWidth < 500 ||  iframeX < -38 || (iframeX + iframeRect.width > globalThis.innerWidth + 12);
-		
-		// this.iframe.classList.toggle("center", centered);
-		// if (centered) {
-		// 	this.iframe.classList.toggle("left", false);
-		// 	this.iframe.classList.toggle("right", false);
-		// }
-
-		// if (!centered && animation)
-		// 	this.classList.add("animation", animation);
-		// else this.classList.remove("animation", "left", "right");
-
-		// this.setScrolling(!(
-		// 	this.isExpanded() && centered
-		// ));
-		// return centered ? "center" : alignment ? "left" : "right";
 	}
 }

@@ -19,7 +19,9 @@
 			right: -38px!important;
 		}
 	}
+	box-sizing: border-box;
 	.auth-button {
+		box-sizing: border-box;
 		position: relative;
 		&::before {
 			content: "";

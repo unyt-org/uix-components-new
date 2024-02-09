@@ -57,7 +57,7 @@
 		}
 	}
 
-	&.connected {
+	&.connected div[slot="content"]  {
 		&:hover {
 			&>a {
 				background-color: var(--text);
@@ -70,7 +70,7 @@
 			opacity: 0;
 		}
 	}
-	&.expanded > .chevron-down {
+	&.expanded div[slot="content"] > .chevron-down {
 		transform: rotate(180deg)!important;
 	}
 	&.error {
