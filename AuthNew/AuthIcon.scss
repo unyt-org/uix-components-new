@@ -78,18 +78,39 @@
 		-webkit-filter: grayscale(1) brightness(1.3);
 	}
 	
-	&>iframe {
-		&.left {
-			left: 0;//-38px;
+	// &>iframe {
+	// 	&.left {
+	// 		left: 0;//-38px;
+	// 	}
+	// 	&.right {
+	// 		right: 0;//-12px;
+	// 	}
+	// }
+	iframe {
+		&[data-alignment="left"] {
+			left: -36px;
 		}
-		&.right {
-			right: 0;//-12px;
+		&[data-alignment="right"] {
+			right: -12px;
+		}
+		&[data-alignment="left-fixed"] {
+			left: 0;
+		}
+		&[data-alignment="right-fixed"] {
+			right: 0;
 		}
 	}
-	
 	@media (orientation: portrait) {
 		uix-auth-component .chevron-down {
 			display: none!important;
+		}
+		iframe {
+			&[data-alignment="left"] {
+				left: 0px!important;
+			}
+			&[data-alignment="right"] {
+				right: 0px!important;
+			}
 		}
 	}
 }

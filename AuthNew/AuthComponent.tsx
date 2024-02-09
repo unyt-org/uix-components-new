@@ -146,7 +146,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	async expand() {
 		await this.iFrameInterface.expand();
 		this.classList.toggle("expanded", true);
-		const isCentered = this.iframe.classList.contains("center");
+		const isCentered = this.iframe.getAttribute("data-alignment") === "center";
 		this.setScrolling(!isCentered);
 	}
 
@@ -263,21 +263,29 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	@frontend
 	protected autoPositionIframe() {
+		if (window.innerWidth < 500) {
+			this.iframe.setAttribute("data-alignment", "center")
+			return "center";
+		}
+
 		let alignment = "left";
 		this.iframe.setAttribute("data-alignment", alignment);
-		const iframePosition = this.iframe.getBoundingClientRect();
-		const iframeRight = iframePosition.x + iframePosition.width;
+		let iframePosition = this.iframe.getBoundingClientRect();
+		let iframeRight = iframePosition.x + iframePosition.width;
+		let alreadyAligned = false;
 
-		console.log(
-			iframePosition,
-			iframeRight,
-			window.innerWidth,
-
-		)
 		if (iframeRight >= globalThis.innerWidth) {
 			alignment = "right";
+			alreadyAligned = true;
 		}
 		this.iframe.setAttribute("data-alignment", alignment);
+
+		iframePosition = this.iframe.getBoundingClientRect();
+		const iframeLeft = iframePosition.x;
+		iframeRight = iframePosition.x + iframePosition.width;
+		if (iframeLeft < 0) {
+			this.iframe.setAttribute("data-alignment", alreadyAligned ? "center" : "left-fixed");
+		}
 		return alignment;
 
 		// return;
