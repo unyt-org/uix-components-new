@@ -6,6 +6,8 @@ import { use } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";
 import { UIX } from "uix";
 import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
+import { LanguageSelect } from "components/Defaults/LanguageSelect.tsx";
+
 
 @template(function(this: Sitemap) {
 	return <div>
@@ -17,9 +19,8 @@ import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 		</a>
 		<div id="sitemapSections"></div>
 		<div id="settingsRow">
-			{
-				this.languageSelector
-			}
+			{/* <LanguageSelect/> */}
+
 			<div>
 				<ToggleSwitch
 					size={38}

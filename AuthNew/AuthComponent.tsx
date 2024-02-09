@@ -3,7 +3,6 @@ import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
 import { Datex } from "unyt_core/datex.ts";
 import { UIX } from "uix";
-import { communicationHub } from "unyt_core/network/communication-hub.ts";
 
 
 @template(function(this: AuthComponent) {
@@ -213,7 +212,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	@frontend
 	async loadDependencies() {
 		await import("uix");
-		await import("datex-core-legacy/iframes/iframe-com-interface.ts");
+		// await import("datex-core-legacy/iframes/iframe-com-interface.ts");
 		await import("./interfaces/WindowAppInterface.ts");
 		await import("./interfaces/AppInterface.ts");
 

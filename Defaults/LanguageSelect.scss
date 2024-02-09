@@ -1,0 +1,40 @@
+@import "https://dev.cdn.unyt.org/uix/style/fontawesome.css";
+
+:host {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bg_content_dark)!important;
+	border: 1px solid rgba(171, 171, 171, 0.19);
+	border-radius: 5px;
+	position: relative;
+	width: fit-content;
+	position: relative;
+	--size: 34px;
+	width: var(--size)!important;
+	height: var(--size);
+	justify-content: center;
+	align-items: center;
+	
+	box-sizing: border-box;
+	
+	select {
+		position: absolute;
+		appearance: none;
+		font-size: medium;
+		box-sizing: border-box;
+		-webkit-appearance: none;
+		width: 100%;
+		padding: 10px 30px 10px 10px;
+		cursor: pointer;
+		// display: none;
+		width: 100%;
+		opacity: 0;
+	}
+	// &.active {
+	// 	select {
+	// 		top: -30px;
+	// 		right: 0;
+	// 	}
+	// }
+}

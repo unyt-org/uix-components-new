@@ -19,20 +19,20 @@ export val map = [
 		},
 		items: [
 			{
-				name: 'Whitepaper',
-				link: https://unyt.org/whitepaper
-			},
-			{
 				name: localtext {
-					en: 'Features',
-					de: 'Möglichkeiten'
+					en: 'Essential',
+					de: 'Grundlagen'
 				},
 				link: https://unyt.org/
 			},
 			{
+				name: 'Open-Source',
+				link: https://github.com/unyt-org
+			},
+			{
 				name: localtext {
 					en: 'Sponsors',
-					de: 'Sponsors'
+					de: 'Sponsoren'
 				},
 				link: https://unyt.org/sponsors
 			},
@@ -84,7 +84,7 @@ export val map = [
 	{
 		topic: localtext {
 			en: 'Company',
-			de: 'Firma'
+			de: 'Verein'
 		},
 		items: [
 			{
@@ -96,10 +96,10 @@ export val map = [
 			},
 			{
 				name: localtext {
-					en: 'Press',
-					de: 'Presse'
+					en: 'Donate',
+					de: 'Spenden'
 				},
-				link: https://unyt.org/about
+				link: https://unyt.org/donate
 			},
 			{
 				name: localtext {
