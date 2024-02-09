@@ -82,6 +82,27 @@
 			margin-top: 10px!important;
 		}
 	}
+	@media screen and (max-width: 300px) {
+		#sitemapSections > div {
+			width: 100%;
+			text-align: center;
+			margin: auto;
+			margin-top: 20px;
+		}
+	}
+	@media screen and (max-width: 380px) {
+		#sitemapSections > div {
+			text-align: center;
+		}
+		#sitemapTitle {
+			justify-content: center;
+			display: flex;
+		}
+		#settingsRow {
+			margin-top: 20px!important;
+			flex-direction: column;
+		}
+	}
 
 	#sitemapLink {
 		position: absolute;
