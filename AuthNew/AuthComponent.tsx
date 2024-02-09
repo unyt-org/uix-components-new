@@ -263,36 +263,54 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	@frontend
 	protected autoPositionIframe() {
-		const parent = (this as unknown as HTMLElement).getBoundingClientRect();
-		const parentX = parent.x;
-		const animationPercentage = 0.2;
-		const animation = 
-			parentX < globalThis.innerWidth * animationPercentage ?
-			"left" :
-			parentX + parent.width > globalThis.innerWidth * (1 - animationPercentage) ?
-			"right" : null;
-		const alignment = parentX < globalThis.innerWidth / 2;
-		this.iframe.classList.toggle("center", false);
-		this.iframe.classList.toggle("left", alignment);
-		this.iframe.classList.toggle("right", !alignment);
-		
-		const iframeRect = this.iframe.getBoundingClientRect();
-		const iframeX = iframeRect.x;
-		const centered = globalThis.innerWidth < 500 ||  iframeX < -38 || (iframeX + iframeRect.width > globalThis.innerWidth + 12);
-		
-		this.iframe.classList.toggle("center", centered);
-		if (centered) {
-			this.iframe.classList.toggle("left", false);
-			this.iframe.classList.toggle("right", false);
+		let alignment = "left";
+		this.iframe.setAttribute("data-alignment", alignment);
+		const iframePosition = this.iframe.getBoundingClientRect();
+		const iframeRight = iframePosition.x + iframePosition.width;
+
+		console.log(
+			iframePosition,
+			iframeRight,
+			window.innerWidth,
+
+		)
+		if (iframeRight >= globalThis.innerWidth) {
+			alignment = "right";
 		}
+		this.iframe.setAttribute("data-alignment", alignment);
+		return alignment;
 
-		if (!centered && animation)
-			this.classList.add("animation", animation);
-		else this.classList.remove("animation", "left", "right");
+		// return;
+		// const parent = (this as unknown as HTMLElement).getBoundingClientRect();
+		// const parentX = parent.x;
+		// const animationPercentage = 0.2;
+		// const animation = 
+		// 	parentX < globalThis.innerWidth * animationPercentage ?
+		// 	"left" :
+		// 	parentX + parent.width > globalThis.innerWidth * (1 - animationPercentage) ?
+		// 	"right" : null;
+		// const alignment = parentX < globalThis.innerWidth / 2;
+		// this.iframe.classList.toggle("center", false);
+		// this.iframe.classList.toggle("left", alignment);
+		// this.iframe.classList.toggle("right", !alignment);
+		
+		// const iframeRect = this.iframe.getBoundingClientRect();
+		// const iframeX = iframeRect.x;
+		// const centered = globalThis.innerWidth < 500 ||  iframeX < -38 || (iframeX + iframeRect.width > globalThis.innerWidth + 12);
+		
+		// this.iframe.classList.toggle("center", centered);
+		// if (centered) {
+		// 	this.iframe.classList.toggle("left", false);
+		// 	this.iframe.classList.toggle("right", false);
+		// }
 
-		this.setScrolling(!(
-			this.isExpanded() && centered
-		));
-		return centered ? "center" : alignment ? "left" : "right";
+		// if (!centered && animation)
+		// 	this.classList.add("animation", animation);
+		// else this.classList.remove("animation", "left", "right");
+
+		// this.setScrolling(!(
+		// 	this.isExpanded() && centered
+		// ));
+		// return centered ? "center" : alignment ? "left" : "right";
 	}
 }

@@ -68,10 +68,10 @@
 		opacity: 0;
 		background-color: transparent;
 		pointer-events: none;
-		&.left {
-			left: -38px;
+		&[data-alignment="left"] {
+			left: 12px;
 		}
-		&.right {
+		&[data-alignment="right"] {
 			right: -12px;
 		}
 		&.center {
