@@ -20,13 +20,11 @@ export class AppInterface {
 		// await auth.useEndpoint(endpoint);
 	}
 	@expose static async onLogout(endpoint?: Datex.Endpoint) {
-		setTimeout(async ()=>{
-			console.info("Logging out...", endpoint);
-			if (Datex.Runtime.endpoint !== endpoint) {
-				const newEndpoint = Datex.Endpoint.get(Datex.Endpoint.createNewID()) as Datex.IdEndpoint;
-				await Datex.Supranet.connect(newEndpoint, true);
-				globalThis.location.reload();
-			}
-		}, 2000);
+		console.info("Logging out...", endpoint);
+		if (Datex.Runtime.endpoint !== endpoint) {
+			const newEndpoint = Datex.Endpoint.get(Datex.Endpoint.createNewID()) as Datex.IdEndpoint;
+			await Datex.Supranet.connect(newEndpoint, true);
+			globalThis.location.reload();
+		}
 	}
 }
