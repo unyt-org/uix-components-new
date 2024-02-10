@@ -6,12 +6,12 @@ import { content, include } from "uix/base/decorators.ts";
 @template()
 export class TourFooter extends Component<{ reverseOrder?: boolean }> {
 	@include declare strings: Record<string, Datex.Value<string>>
-
+	@frontend declare options;
 	@content main = <div></div>;
 
 	override onCreate() {
 		const href = ["https://github.com/unyt-org", "https://unyt.org/patreon"];
-		this.options.reverseOrder && href.reverse();
+		this.options?.reverseOrder && href.reverse();
 		
 		this.main = <div class="tour-footer-main" style="--delay: 7s">
 			<div>
@@ -32,14 +32,14 @@ export class TourFooter extends Component<{ reverseOrder?: boolean }> {
 			</div>
 			<div>
 				<a href={href[0]} class="button-elem">
-					{this.options.reverseOrder ? this.strings.button2 : this.strings.button1}
+					{this.options?.reverseOrder ? this.strings.button2 : this.strings.button1}
 				</a>
 				<div class="button-container">
 					<span style="--start-color:#0075e2;--end-color:#00cdc6"></span>
 					<span style="--start-color:#7025bc;--end-color:#f10079"></span>
 					<span style="--start-color:#FF4D4D;--end-color:#edc228"></span>
 					<a href={href[1]} class="button-elem">
-						{this.options.reverseOrder ? this.strings.button1 : this.strings.button2}
+						{this.options?.reverseOrder ? this.strings.button1 : this.strings.button2}
 					</a>
 				</div>
 			</div>
