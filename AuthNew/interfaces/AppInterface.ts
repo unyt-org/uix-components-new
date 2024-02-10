@@ -24,10 +24,12 @@ export class AppInterface {
 		console.info("Logging out...", endpoint);
 		if (Datex.Runtime.endpoint !== endpoint) {
 			const newEndpoint = Datex.Endpoint.get(Datex.Endpoint.createNewID()) as Datex.IdEndpoint;
-			await Datex.Supranet.connect(newEndpoint, true);
+			try {
+				await Datex.Supranet.init(newEndpoint, true);
+			} catch {
+				globalThis.reset?.();
+			}
 		}
-	}
-	@expose static async refresh() {
 		globalThis.location.reload();
 	}
 }
