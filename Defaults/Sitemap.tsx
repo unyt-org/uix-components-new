@@ -6,7 +6,7 @@ import { use } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";
 import { UIX } from "uix";
 import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
-import { LanguageSelect } from "components/Defaults/LanguageSelect.tsx";
+import { LanguageSelect } from "./LanguageSelect.tsx";
 
 @template(function(this: Sitemap) {
 	return <div>
