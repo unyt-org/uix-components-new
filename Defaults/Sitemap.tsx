@@ -19,7 +19,7 @@ import { LanguageSelect } from "components/Defaults/LanguageSelect.tsx";
 		</a>
 		<div id="sitemapSections"></div>
 		<div id="settingsRow">
-			{/* <LanguageSelect/> */}
+			<LanguageSelect/>
 
 			<div>
 				<ToggleSwitch

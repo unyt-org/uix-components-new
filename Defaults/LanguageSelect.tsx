@@ -1,3 +1,4 @@
+import { UIX } from "uix";
 import { Component } from "uix/components/Component.ts";
 import { Icon } from "components/Defaults/Icon.tsx";
 
@@ -7,22 +8,40 @@ import { Icon } from "components/Defaults/Icon.tsx";
 			<Icon name="fa-globe"/>
 		</label>
 		<select id="picker">
-			<option value="de">German</option>
-			<option value="en" selected>English</option>
+			<option value="de">Deutsch</option>
+			<option value="en">English</option>
 		</select>
 	</>
 })
 export class LanguageSelect extends Component {
 	@frontend @id declare picker: HTMLSelectElement;
 
+	override onCreate() {
+		if (UIX) {
+			const lang = UIX.language == "de" ? "de" : "en";
+			(this.picker.querySelector(`option[value='${lang}']`) as HTMLOptionElement).selected = true;
+		}
+	}
+
+	@frontend
+	selectLanguage() {
+
+	}
+
 	@frontend
 	override async onDisplay() {
-		const {UIX} = await import("uix");
-		// this.picker.options.namedItem()
+		const defaultLanguage = navigator.language?.startsWith("de") ? "de" : "en";
+		this.picker.value = defaultLanguage;
 		this.addEventListener("click", () => {
 			this.classList.add("active");
 			this.picker.focus();
 			this.picker.click();
+		})
+		const {UIX} = await import("uix");
+		this.picker.value = UIX.language == "de" ? "de" : "en";
+		this.picker.addEventListener("input", () => {
+			UIX.language = this.picker.value;
+			globalThis.location.reload();
 		})
 	}
 }
