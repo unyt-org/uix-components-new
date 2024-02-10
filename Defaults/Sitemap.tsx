@@ -59,13 +59,12 @@ export class Sitemap extends Component<{disableAnchor?: boolean}> {
 		})
 	}
 
-	
 	declare onScrollTop: () => void;
 
 	@frontend 
 	protected override async onDisplay() {
 		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => {
-			if (this.options.disableAnchor && this.onScrollTop)
+			if (this.options?.disableAnchor && this.onScrollTop)
 				this.onScrollTop();
 			else globalThis.scrollTo({top: 0, behavior: "smooth"});
 		});
