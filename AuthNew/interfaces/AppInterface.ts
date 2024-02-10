@@ -1,3 +1,4 @@
+// deno-lint-ignore-file require-await
 import { Datex } from "unyt_core/datex.ts";
 import { endpoint_default, expose, namespace } from "unyt_core/datex_all.ts";
 
@@ -24,7 +25,9 @@ export class AppInterface {
 		if (Datex.Runtime.endpoint !== endpoint) {
 			const newEndpoint = Datex.Endpoint.get(Datex.Endpoint.createNewID()) as Datex.IdEndpoint;
 			await Datex.Supranet.connect(newEndpoint, true);
-			globalThis.location.reload();
 		}
+	}
+	@expose static async refresh() {
+		globalThis.location.reload();
 	}
 }
