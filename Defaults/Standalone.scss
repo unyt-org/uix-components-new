@@ -1,5 +1,7 @@
 body {
 	&[data-color-scheme="light"] {
+		--contrast: black;
+		--contrast-inv: white;
 		uix-sitemap img, .uix-header #logo img {
 			filter: brightness(0);
 		}
@@ -11,8 +13,14 @@ body {
 			--text: #515151;
 			--border-color: #c5c5c5;
 		}
+		uix-tour-footer {
+			--default-color: #000!important;
+			--grad-color: rgba(26, 26, 26, 0.75)!important;
+		}
 	}
 	&[data-color-scheme="dark"] {
+		--contrast: white;
+		--contrast-inv: black;
 		uix-sitemap {
 			--text: #dcdcdc;
 			--bg_content_dark: #0e0e0e;
