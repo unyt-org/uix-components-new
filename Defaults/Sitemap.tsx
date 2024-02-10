@@ -8,7 +8,6 @@ import { UIX } from "uix";
 import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 import { LanguageSelect } from "components/Defaults/LanguageSelect.tsx";
 
-
 @template(function(this: Sitemap) {
 	return <div>
 		<div id="sitemapTitle">
@@ -24,31 +23,27 @@ import { LanguageSelect } from "components/Defaults/LanguageSelect.tsx";
 			<div>
 				<ToggleSwitch
 					size={38}
-					label={UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light}
+					checked={UIX?.Theme?.mode === "dark"}
+					label={UIX?.Theme?.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light}
 					id="apperanceToggle"/>
 			</div>
 		</div>
 	</div>
 })
-export class Sitemap extends Component<Component.Options> {
+export class Sitemap extends Component<{disableAnchor?: boolean}> {
 	@id("sitemapTitle") declare sitemapTitle: HTMLDivElement;
 	@frontend @id("sitemapLink") declare sitemapLink: HTMLAnchorElement;
-	private locale = ["de", "en", "fr", "it"];
 	@use declare strings: Record<string, Datex.Value<string>>
 	@use declare map: Array<{topic: string, items: {name: string, link: string}[]}>;
 
 	@id("sitemapSections") declare sitemapSections: HTMLDivElement;
 
 	@frontend @id languageSelector = <div></div>
-	// new DropdownMenu2(["Deutsch", "English", "Français", "Italiano"], {
-	// 	selected_index: this.locale.indexOf(Datex.Runtime.ENV.LANG) ?? 1, 
-	// 	onChange: (index: number, _value: string)=>{
-	// 		Datex.Runtime.ENV.LANG = this.locale[index] ?? "en";
-	// 	}
-	// });
 	@frontend @property appearance = "";
 	@id @frontend declare apperanceToggle: ToggleSwitch;
 	
+	@frontend declare options;
+
 	@id("settingsRow") declare settingsRow: HTMLElement;
 
 	private createSections() {
@@ -64,15 +59,17 @@ export class Sitemap extends Component<Component.Options> {
 		})
 	}
 
-	@frontend
-	declare options: any;
 	
 	declare onScrollTop: () => void;
 
 	@frontend 
 	protected override async onDisplay() {
-		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => this?.onScrollTop?.());
-		await import("uix");
+		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => {
+			if (this.options.disableAnchor && this.onScrollTop)
+				this.onScrollTop();
+			else globalThis.scrollTo({top: 0, behavior: "smooth"});
+		});
+		if (!globalThis.UIX) await import("uix");
 		
 		this.apperanceToggle.setChecked(UIX.Theme.mode === "dark");
 		this.apperanceToggle.onToggle(e => {
@@ -92,11 +89,7 @@ export class Sitemap extends Component<Component.Options> {
 	}
 
 	override onCreate() {
-		//this.languageSelector.querySelector(".dropdown")!.prepend(<Icon name="fa-globe"/>);
-	
 		this.$.appearance = UIX.Theme.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light;
-		// this.settingsRow = <div>{this.languageSelector}</div>;
-		// this.settingsRow = <div>{this.languageSelector}<div><span>{this.$$.appearance}</span>{this.apperanceToggle}</div></div>;
 		this.createSections();
 	}
 }

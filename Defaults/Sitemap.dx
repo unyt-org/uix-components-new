@@ -14,13 +14,13 @@ export val strings = {
 export val map = [
 	{
 		topic: localtext {
-			en: 'Product',
-			de: 'Produkt'
+			en: 'Overview',
+			de: 'Übersicht'
 		},
 		items: [
 			{
 				name: localtext {
-					en: 'Essential',
+					en: 'Essentials',
 					de: 'Grundlagen'
 				},
 				link: https://unyt.org/
@@ -60,17 +60,17 @@ export val map = [
 			},
 			{
 				name: localtext {
-					en: 'Glossary',
-					de: 'Glossar'
-				},
-				link: "https://unyt.org/glossary"
-			},
-			{
-				name: localtext {
 					en: 'Blog',
 					de: 'Blog'
 				},
 				link: https://unyt.blog
+			},
+			{
+				name: localtext {
+					en: 'Glossary',
+					de: 'Glossar'
+				},
+				link: "https://unyt.org/glossary"
 			},
 			{
 				name: localtext {

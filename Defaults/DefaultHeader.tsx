@@ -89,6 +89,7 @@ export class DefaultHeader extends Component {
 	}
 
 	public override onCreate() {
+		this.classList.add("uix-header");
 		this.hamburgerMenu.collapse();
 	}
 }

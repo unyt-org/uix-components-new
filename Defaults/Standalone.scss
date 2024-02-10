@@ -1,0 +1,26 @@
+body {
+	&[data-color-scheme="light"] {
+		uix-sitemap img, .uix-header #logo img {
+			filter: brightness(0);
+		}
+		uix-sitemap {
+			--bg_content_dark: #dddddd;
+			--bg-dark: #ababab;
+		}
+		uix-unyt-footer {
+			--text: #515151;
+			--border-color: #c5c5c5;
+		}
+	}
+	&[data-color-scheme="dark"] {
+		uix-sitemap {
+			--text: #dcdcdc;
+			--bg_content_dark: #0e0e0e;
+			--bg-dark: #ababab;
+		}
+		uix-unyt-footer {
+			--text: #515151;
+			--border-color: rgba(255, 255, 255, 0.2);
+		}
+	}
+}
