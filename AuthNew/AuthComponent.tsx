@@ -3,6 +3,7 @@ import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
 import { Datex } from "unyt_core/datex.ts";
 import { UIX } from "uix";
+import { Supranet } from "unyt_core/datex_all.ts";
 
 
 @template(function(this: AuthComponent) {
@@ -170,8 +171,8 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	@frontend
 	private async onLoad() {
 		if (!Datex.Supranet.connected) {
-			this._logger.warn("Main page is not connected to Supranet. Waiting for connection...");
-			await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
+			this._logger.warn("Main page is not connected to Supranet.");
+			// await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
 		}
 		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
 
@@ -217,7 +218,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 		this.strings = (await datex.get<{strings: any}>("./AuthComponent.dx")).strings;
 		const {jsx:_jsx, jsxs:_jsxs, Fragment:_Fragment} = await import("uix/jsx-runtime");
-		await Datex.Supranet.connectAnonymous();
+		//await Datex.Supranet.connectAnonymous();
 	}
 
 	@frontend lastAppearance?: {
