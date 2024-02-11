@@ -1,7 +1,7 @@
 import { Path } from "uix/utils/path.ts";
 import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
-import { Datex } from "unyt_core/datex.ts";
+import { Datex, f } from "unyt_core/datex.ts";
 import { UIX } from "uix";
 import { Supranet } from "unyt_core/datex_all.ts";
 
@@ -172,7 +172,10 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	private async onLoad() {
 		if (!Datex.Supranet.connected) {
 			this._logger.warn("Main page is not connected to Supranet.");
-			// await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
+		}
+		if (Datex.Runtime.endpoint.equals(f("@@local"))) {
+			this._logger.error("Can not connect without an endpoint!");
+			await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
 		}
 		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
 
