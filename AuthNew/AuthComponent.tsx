@@ -31,6 +31,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	protected override async onDisplay() {
 		if (this.options.__create)
 			return;
+		this.iframe.style.opacity = "0";
 		await this.loadDependencies();
 		this._logger = new Datex.Logger("Auth");
 
