@@ -36,8 +36,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 		this._logger.success("Loaded dependencies (UIX / DATEX COMInterface)");
 		this.createBlockerElement();
-		this.iframe.setAttribute("allow", "clipboard-write");
-		this.iframe.setAttribute("sandbox", "allow-modals allow-forms allow-popups allow-scripts allow-same-origin");
+		this.iframe.setAttribute("sandbox", "allow-modals allow-forms allow-popups allow-scripts allow-same-origin allow-top-navigation");
 		
 		
 		this.iframe.onload = () => this.onLoad();
