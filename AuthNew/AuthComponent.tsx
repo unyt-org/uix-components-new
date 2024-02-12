@@ -45,7 +45,23 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	}
 
 	@frontend
-	load() {
+	async load() {
+		if (!Datex.Supranet.connected) {
+			this._logger.warn("Main page is not connected to Supranet.");
+		}
+		if (Datex.Runtime.endpoint.equals(f("@@local"))) {
+			this._logger.error("Can not connect without an endpoint! Waiting for Supranet connection...");
+			const isConnected = await new Promise((r) => {
+				Datex.Supranet.onConnected(() => r(true));
+				setTimeout(() => r(false), 3000);
+			});
+			if (!isConnected) {
+				this._logger.warn("Please add a Supranet.connect in your application.");
+				await Datex.Supranet.connect();
+			}
+			this._logger.success("Got a connection to the Supranet");
+		}
+		
 		const src = this.options.__host ?? "https://auth-content.unyt.org";
 		this._logger.info("Loading Auth Comp (iframe) from", src);
 		this.classList.toggle("expanded", false);
@@ -169,21 +185,6 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	@frontend
 	private async onLoad() {
-		if (!Datex.Supranet.connected) {
-			this._logger.warn("Main page is not connected to Supranet.");
-		}
-		if (Datex.Runtime.endpoint.equals(f("@@local"))) {
-			this._logger.error("Can not connect without an endpoint! Waiting for Supranet connection...");
-			const isConnected = await new Promise((r) => {
-				Datex.Supranet.onConnected(() => r(true));
-				setTimeout(() => r(false), 3000);
-			});
-			if (!isConnected) {
-				this._logger.warn("Please add a Supranet.connect in your application.");
-				await Datex.Supranet.connect();
-			}
-			this._logger.success("Got a connection to the Supranet");
-		}
 		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
 
 		this._logger.success("Auth Comp (iframe) was loaded");
