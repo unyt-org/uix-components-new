@@ -174,7 +174,14 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		}
 		if (Datex.Runtime.endpoint.equals(f("@@local"))) {
 			this._logger.error("Can not connect without an endpoint! Waiting for Supranet connection...");
-			await new Promise((r) => Datex.Supranet.onConnected(() => r(null)));
+			const isConnected = await new Promise((r) => {
+				Datex.Supranet.onConnected(() => r(true));
+				setTimeout(() => r(false), 3000);
+			});
+			if (!isConnected) {
+				this._logger.warn("Please add a Supranet.connect in your application.");
+				await Datex.Supranet.connect();
+			}
 			this._logger.success("Got a connection to the Supranet");
 		}
 		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
