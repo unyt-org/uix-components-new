@@ -2,18 +2,18 @@ import { Datex } from "unyt_core/datex.ts";
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
-import { use } from "uix/base/decorators.ts";
+import { content, include } from "uix/base/decorators.ts";
 
 @template()
-export class Navigator extends Component<Component.Options> {
+export class Navigator extends Component {
 	@content navigatorTitle = <a href='/' class="navigation active"></a>
 	@content expandButton = <Icon name="fa-chevron-down"/>;
 	private isCollapsed = true;
-	@use declare links: {name: string, link: string}[]
-	@use declare strings: Record<string, Datex.CompatValue<string>>
+	@include links!: {name: string, link: string}[]
+	@include strings!: Record<string, Datex.CompatValue<string>>
 
 	@content body = <div></div>;
-	@property declare navigation: string;
+	@property navigation!: string;
 
 	public onRefresh() {}
 

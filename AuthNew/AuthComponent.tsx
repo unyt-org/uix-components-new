@@ -6,7 +6,7 @@ import { UIX } from "uix";
 import { Supranet } from "unyt_core/datex_all.ts";
 
 
-@template(function(this: AuthComponent) {
+@template(function() {
 	return <light-root data-appearance={this.options.appearance ?? "auto"}>
 		<link rel={"stylesheet"} href={new Path("./Auth.css")}/>
 		<div id="backdrop"/>
@@ -15,17 +15,17 @@ import { Supranet } from "unyt_core/datex_all.ts";
 	</light-root>
 })
 export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "light" | "neutral" | "auto", __create?: boolean, __host?: string} & T> {
-	@id @frontend protected declare iframe: HTMLIFrameElement;
-	@id @frontend protected declare backdrop: HTMLDivElement;
+	@id @frontend protected iframe!: HTMLIFrameElement;
+	@id @frontend protected backdrop!: HTMLDivElement;
 	@frontend declare options;
 	@frontend eventListenersSet = false;
-	@frontend protected declare blockerElem: HTMLDivElement;
-	@include("./AuthComponent.dx") @frontend declare strings: { [ key: string ]: string};
+	@frontend protected blockerElem!: HTMLDivElement;
+	@include("./AuthComponent.dx") @frontend strings!: { [ key: string ]: string};
 
 	// @ts-ignore $
-	@frontend declare iFrameInterface: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
+	@frontend iFrameInterface!: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
 
-	@frontend declare _logger: Datex.Logger;
+	@frontend _logger!: Datex.Logger;
 
 	@frontend
 	protected override async onDisplay() {

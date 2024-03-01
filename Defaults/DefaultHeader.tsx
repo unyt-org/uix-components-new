@@ -1,7 +1,7 @@
 import { HamburgerMenu } from './HamburgerMenu.tsx';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
-import { use } from "uix/base/decorators.ts";
+import { include } from "uix/base/decorators.ts";
 import { Icon } from "./Icon.tsx";
 
 type Link = {
@@ -22,10 +22,10 @@ type Link = {
 	</>
 })
 export class DefaultHeader extends Component {
-	@use declare links: Link[]
-	@frontend @id declare hamburgerMenu: HamburgerMenu;
-	@frontend @id declare navigationContainer: HTMLDivElement;
-	@frontend @id declare actionContainer: HTMLDivElement;
+	@include links!: Link[]
+	@frontend @id hamburgerMenu!: HamburgerMenu;
+	@frontend @id navigationContainer!: HTMLDivElement;
+	@frontend @id actionContainer!: HTMLDivElement;
 
 	protected createHamburgerMenu(): Element | void {
 		const hamburgerMenu = <HamburgerMenu id="hamburgerMenu"/> as HamburgerMenu;

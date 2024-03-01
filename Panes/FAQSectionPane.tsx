@@ -20,6 +20,6 @@ type FAQSectionPaneOptions = {
 		</details>)}
 	</div>
 )
-export class FAQSectionPane extends Component<Component.Options & FAQSectionPaneOptions> {
+export class FAQSectionPane extends Component<FAQSectionPaneOptions> {
 	
 }

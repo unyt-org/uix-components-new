@@ -24,6 +24,6 @@ type WhitepaperPaneOptions = {
 		</div>
 	</div>
 )
-export class WhitepaperPane extends Component<Component.Options & WhitepaperPaneOptions> {
+export class WhitepaperPane extends Component<WhitepaperPaneOptions> {
 	
 }

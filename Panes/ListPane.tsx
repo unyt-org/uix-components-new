@@ -57,7 +57,7 @@ export type LinkPaneItem = {
 		</div>
 	</div>
 })
-export class ListPane extends Component<Component.Options & ListPaneOptions> {
+export class ListPane extends Component<ListPaneOptions> {
 	@frontend
 	declare options: any;
 

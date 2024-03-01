@@ -1,11 +1,11 @@
 
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
-import { use } from "uix/base/decorators.ts";
+import { include } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";
 
 
-@template(function(this: UnytFooter) {
+@template(function() {
 	return <>
 		<div class="copyright">&copy; <span>{new Date().getFullYear() ?? 2024} unyt.org</span></div>
 		<div class="tos">
@@ -16,11 +16,11 @@ import { Icon } from "../Defaults/Icon.tsx";
 		<div id="references" class="references"></div>
 	</>
 })
-export class UnytFooter extends Component<Component.Options> {
-	@use declare refs: Array<{name: string, link:URL, icon:URL | string}>;
-	@use declare strings: Record<string, string>;
+export class UnytFooter extends Component {
+	@include refs!: Array<{name: string, link:URL, icon:URL | string}>;
+	@include strings!: Record<string, string>;
 
-	@id declare references: HTMLDivElement;
+	@id references!: HTMLDivElement;
 
 	public expand() {
 		this.classList.add("expanded");

@@ -9,7 +9,7 @@ export type QuotePaneItem = {
 	description: string,
 	reference: string | Element,
 }
-@template<QuotePaneOptions>(({items}) =>
+@template(({items}) =>
 	<div class="quote-pane">
 		{
 			(items as QuotePaneItem[]).map(item => {
@@ -25,5 +25,5 @@ export type QuotePaneItem = {
 		}
 	</div>
 )
-export class QuotePane extends Component<Component.Options & QuotePaneOptions> {
+export class QuotePane extends Component<QuotePaneOptions> {
 }

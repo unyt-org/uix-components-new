@@ -2,6 +2,7 @@ import { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import Markdown from "../Defaults/Markdown.tsx";
+import { _ } from "unyt_core/utils/auto_map.ts";
 
 type AppDownloadPaneOptions = {
 	header: string,
@@ -9,7 +10,7 @@ type AppDownloadPaneOptions = {
 	linkAppstore?: string | URL,
 	linkPlaystore?: string | URL
 }
-@template<AppDownloadPaneOptions>(({ header, image, linkAppstore, linkPlaystore}) =>
+@template<AppDownloadPaneOptions>((_, {header, image, linkAppstore, linkPlaystore}) =>
 	<div class="app-download-pane">
 		<div class="content">
 			<img src={image}/>
@@ -29,6 +30,6 @@ type AppDownloadPaneOptions = {
 		</div>
 	</div>
 )
-export class AppDownloadPane extends Component<Component.Options & AppDownloadPaneOptions> {
+export class AppDownloadPane extends Component<AppDownloadPaneOptions> {
 	
 }

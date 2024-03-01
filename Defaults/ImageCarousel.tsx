@@ -34,11 +34,11 @@ type ImageCarouselOptions = {
 		</div>
 	</div>
 )
-export class ImageCarousel extends Component<Component.Options & ImageCarouselOptions> {
+export class ImageCarousel extends Component<ImageCarouselOptions> {
 	private index = 0;
-	@frontend @id("carousel-slider") declare carouselSlider: HTMLDivElement;
-	@frontend @id("button-left") declare buttonLeft: HTMLDivElement;
-	@frontend @id("button-right") declare buttonRight: HTMLDivElement;
+	@frontend @id("carousel-slider") carouselSlider!: HTMLDivElement;
+	@frontend @id("button-left") buttonLeft!: HTMLDivElement;
+	@frontend @id("button-right") buttonRight!: HTMLDivElement;
 
 	@frontend offset = 0;
 	@frontend isAnimating = false;

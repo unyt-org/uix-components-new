@@ -17,13 +17,13 @@ export type ToggleEvent = CustomEventInit<{checked: boolean, originalEvent: Even
 		</label>
 	</>
 })
-export default class ToggleSwitch extends Component<Component.Options & {
+export default class ToggleSwitch extends Component<{
 	checked?: boolean,
 	size?: number,
 	label?: string | HTMLElement,
 	ontoggle?: (value: boolean) => void
 }> {
-	@frontend @id("toggle-switch") declare switch: HTMLInputElement;
+	@frontend @id("toggle-switch") switch!: HTMLInputElement;
 
 	@frontend declare options;
 

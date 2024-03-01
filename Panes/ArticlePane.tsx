@@ -1,6 +1,7 @@
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import Markdown from "../Defaults/Markdown.tsx";
+import { Icon } from "../Defaults/Icon.tsx";
 
 type ArticlePaneOptions = {
 	title: string,
@@ -18,7 +19,7 @@ export type ArticlePaneItem = {
 	linkText?: string,
 	totalLink?: boolean,
 }
-@template<ArticlePaneOptions>((options) => {
+@template<ArticlePaneOptions>((_, options) => {
 	const {description, items, title, appearance } = options;
 	return <div class="article-list-pane" data-appearance={appearance ?? "dark"}>
 		<div class="content">
@@ -42,7 +43,7 @@ export type ArticlePaneItem = {
 		</div>
 	</div>
 })
-export class ArticlePane extends Component<Component.Options & ArticlePaneOptions> {
+export class ArticlePane extends Component<ArticlePaneOptions> {
 	@frontend
 	declare options: any;
 

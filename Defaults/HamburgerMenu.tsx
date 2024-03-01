@@ -3,7 +3,7 @@ import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 
 @template()
-export class HamburgerMenu extends Component<Component.Options & { action?: "default" | "none"}> {
+export class HamburgerMenu extends Component<{ action?: "default" | "none"}> {
 	public isCollapsed = true;
 
 	@frontend @content menuIcon = <Icon name="fa-bars"/>;

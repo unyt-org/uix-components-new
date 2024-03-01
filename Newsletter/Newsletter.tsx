@@ -37,10 +37,10 @@ import { Icon } from "../Defaults/Icon.tsx";
 		</div>
 	</div>
 })
-export class NewsletterNew extends Component<Component.Options> {
-	@include declare strings: Record<string,Datex.RefOrValue<string>>;
-	@frontend @id declare form: HTMLFormElement;
-	@frontend @id declare error: HTMLDivElement;
+export class NewsletterNew extends Component {
+	@include strings!: Record<string,Datex.RefOrValue<string>>;
+	@frontend @id form!: HTMLFormElement;
+	@frontend @id error!: HTMLDivElement;
 
 	@frontend
 	override onDisplay() {

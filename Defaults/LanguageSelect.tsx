@@ -14,7 +14,7 @@ import { Icon } from "./Icon.tsx";
 	</>
 })
 export class LanguageSelect extends Component {
-	@frontend @id declare picker: HTMLSelectElement;
+	@frontend @id picker!: HTMLSelectElement;
 
 	override onCreate() {
 		if (UIX) {

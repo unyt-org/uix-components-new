@@ -1,4 +1,4 @@
-import { Path } from 'uix/utils/path.ts';
+import { Path } from 'datex-core-legacy/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 
@@ -15,7 +15,7 @@ type RoundImagePaneOptions = {
 	appearance?: "light" | "dark" | "transparent"
 	items: RoundImagePaneEntry[]
 }
-@template<RoundImagePaneOptions>(({ header, appearance, description, items}) =>
+@template<RoundImagePaneOptions>((_, { header, appearance, description, items}) =>
 	<div class="round-image-pane" data-appearance={appearance ?? "light"}>
 		<div class="content">
 			{header && <h1>{header}</h1>}
@@ -33,6 +33,6 @@ type RoundImagePaneOptions = {
 		</div>
 	</div>
 )
-export class RoundImagePane extends Component<Component.Options & RoundImagePaneOptions> {
+export class RoundImagePane extends Component<RoundImagePaneOptions> {
 	
 }

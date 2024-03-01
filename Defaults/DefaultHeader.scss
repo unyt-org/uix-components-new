@@ -1,4 +1,4 @@
-@use "../utils.scss" as *;
+@include "../utils.scss" as *;
 :root {
 	display: flex;
 	align-items: center;

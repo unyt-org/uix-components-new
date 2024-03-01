@@ -7,9 +7,9 @@ import { Component } from "uix/components/Component.ts";
 export class AuthIcon extends Component {
 	
 	@content authIcon = <img src='https://cdn.unyt.org/unyt-resources/logos/unyt/round-dark-background.png'></img>
-	@content declare chevron: HTMLElement;
+	@content chevron!: HTMLElement;
 	@property isExpanded = false;
-	@content declare body: AuthIconBody;
+	@content body!: AuthIconBody;
 
 	@property endpointIdentifier = "jonasstrehle";
 

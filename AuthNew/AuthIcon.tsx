@@ -24,7 +24,7 @@ export class AuthIcon extends AuthComponent {
 	@frontend protected declare button: HTMLDivElement;
 	@frontend protected declare iframe: HTMLIFrameElement;
 	@frontend protected declare blockerElem: HTMLDivElement;
-	@include("./AuthIcon.dx") declare customStrings: { [ key: string ]: string};
+	@include("./AuthIcon.dx") customStrings!: { [ key: string ]: string};
 
 	@frontend
 	protected override async onDisplay() {

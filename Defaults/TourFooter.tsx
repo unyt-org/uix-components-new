@@ -5,7 +5,7 @@ import Markdown from "./Markdown.tsx";
 import { content, include } from "uix/base/decorators.ts";
 @template()
 export class TourFooter extends Component<{ reverseOrder?: boolean }> {
-	@include declare strings: Record<string, Datex.Value<string>>
+	@include strings!: Record<string, Datex.Value<string>>
 	@frontend declare options;
 	@content main = <div></div>;
 

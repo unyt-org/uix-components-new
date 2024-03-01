@@ -16,6 +16,6 @@ type VerticalListOptions = {
 		</li>)}
 	</ul>
 )
-export class VerticalList extends Component<Component.Options & VerticalListOptions> {
+export class VerticalList extends Component<VerticalListOptions> {
 	
 }

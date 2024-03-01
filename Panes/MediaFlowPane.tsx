@@ -13,7 +13,7 @@ type MediaFlowPaneOptions = {
 	appearance?: "light" | "dark" | "transparent",
 	padding?: number
 }
-@template<MediaFlowPaneOptions, never, MediaFlowPane>(function ({padding, mediaSrc, description, pretitle, title, appearance, alignment}) {
+@template(function (_, {padding, mediaSrc, description, pretitle, title, appearance, alignment}) {
 	return <div class="image-flow-pane" data-padding-top={!!(title && pretitle)} style={`--padding: ${padding ?? 50}px`} data-appearance={appearance ?? "dark"} data-alignment={alignment ?? "left"}>
 		<div class="content">
 			{
@@ -29,7 +29,7 @@ type MediaFlowPaneOptions = {
 		</div>
 	</div>
 	})
-export class MediaFlowPane extends Component<Component.Options & MediaFlowPaneOptions> {
+export class MediaFlowPane extends Component<MediaFlowPaneOptions> {
 
 	getMediaElement(url: Datex.RefOrValue<string | URL>) {
 		const urlVal = new Path(val(url));

@@ -1,12 +1,12 @@
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import { Datex, f, not, or, and, transform } from "unyt_core";
-import { use } from "uix/base/decorators.ts";
+import { include } from "uix/base/decorators.ts";
 
 @template()
 export class Newsletter extends Component<Component.Options> {
-	@content declare newsletterTitle: HTMLElement;
-	@content declare newsletterDescription: HTMLElement;
+	@content newsletterTitle!: HTMLElement;
+	@content newsletterDescription!: HTMLElement;
 	@content information = <div></div>
 	@content subscriptionContainer = <div></div>
 	@content emailContainer = <div></div>
@@ -18,8 +18,8 @@ export class Newsletter extends Component<Component.Options> {
 	}
 
 	@content emailInput: UIX.Elements.EMailInput;
-	@content declare sendButton: UIX.Elements.Button;
-	@use declare strings: Record<string,Datex.Value<string>>
+	@content sendButton!: UIX.Elements.Button;
+	@include strings!: Record<string,Datex.Value<string>>
 
 	override onCreate() {
 		const tos = this.$.formData.$.tos;

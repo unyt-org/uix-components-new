@@ -2,7 +2,7 @@
 import { Datex } from "unyt_core/datex.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
-import { use } from "uix/base/decorators.ts";
+import { include } from "uix/base/decorators.ts";
 
 export namespace AuthIconBody {
 	export interface Options extends Component.Options {
@@ -12,8 +12,8 @@ export namespace AuthIconBody {
 
 @template()
 export class AuthIconBody<O extends AuthIconBody.Options = AuthIconBody.Options> extends Component<O> {
-	@content declare endpointInfo: HTMLElement;
-	@use("./AuthIcon.dx") declare body: Record<string, Datex.CompatValue<string>>;
+	@content endpointInfo!: HTMLElement;
+	@include("./AuthIcon.dx") body!: Record<string, Datex.CompatValue<string>>;
 	
 	@content buttonContainer = <div>
 		{/* <a>Your profile</a> */}

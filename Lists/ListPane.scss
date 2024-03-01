@@ -1,4 +1,4 @@
-@use "../utils" as *;
+@include "../utils" as *;
 
 .list-pane {
 	background-color: var(--bg_lighter);

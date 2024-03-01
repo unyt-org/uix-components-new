@@ -11,5 +11,5 @@ export type InfoCardOptions = {
 		<div>{description}</div>
 	</div>
 )
-export class InfoCard extends Component<Component.Options & InfoCardOptions> {
+export class InfoCard extends Component<InfoCardOptions> {
 }

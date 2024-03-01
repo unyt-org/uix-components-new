@@ -20,7 +20,7 @@ export type ComparisonPaneOptions = {
 	header?: string
 }
 
-@template<ComparisonPaneOptions>(({header, items}) =>
+@template<ComparisonPaneOptions>((_, {header, items}) =>
 	<div>
 		{header && <h1>{header}</h1>}
 		<table>
@@ -71,6 +71,6 @@ export type ComparisonPaneOptions = {
 		</table>
 	</div>
 )
-export class ComparisonPane extends Component<Component.Options & {header?: string, items: ComparisonPaneOptions}> {
+export class ComparisonPane extends Component<{header?: string, items: ComparisonPaneOptions}> {
 	
 }

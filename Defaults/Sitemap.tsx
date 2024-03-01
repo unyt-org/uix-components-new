@@ -2,13 +2,13 @@
 import { Component } from "uix/components/Component.ts";
 import { Datex } from "unyt_core";
 import { template } from "uix/html/template.ts";
-import { use } from "uix/base/decorators.ts";
+import { include } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";
 import { UIX } from "uix";
 import ToggleSwitch from "../Defaults/ToggleSwitch.tsx";
 import { LanguageSelect } from "./LanguageSelect.tsx";
 
-@template(function(this: Sitemap) {
+@template(function() {
 	return <div>
 		<div id="sitemapTitle">
 			<img src={{dark: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-light-transparent-3.svg', light: 'https://cdn.unyt.org/unyt-resources/logos/unyt/text-dark-transparent-3.svg'}[UIX.Theme.mode]}></img>
@@ -31,20 +31,20 @@ import { LanguageSelect } from "./LanguageSelect.tsx";
 	</div>
 })
 export class Sitemap extends Component<{disableAnchor?: boolean}> {
-	@id("sitemapTitle") declare sitemapTitle: HTMLDivElement;
-	@frontend @id("sitemapLink") declare sitemapLink: HTMLAnchorElement;
-	@use declare strings: Record<string, Datex.Value<string>>
-	@use declare map: Array<{topic: string, items: {name: string, link: string}[]}>;
+	@id("sitemapTitle") sitemapTitle!: HTMLDivElement;
+	@frontend @id("sitemapLink") sitemapLink!: HTMLAnchorElement;
+	@include strings!: Record<string, Datex.Value<string>>
+	@include map!: Array<{topic: string, items: {name: string, link: string}[]}>;
 
-	@id("sitemapSections") declare sitemapSections: HTMLDivElement;
+	@id("sitemapSections") sitemapSections!: HTMLDivElement;
 
 	@frontend @id languageSelector = <div></div>
 	@frontend @property appearance = "";
-	@id @frontend declare apperanceToggle: ToggleSwitch;
+	@id @frontend apperanceToggle!: ToggleSwitch;
 	
 	@frontend declare options;
 
-	@id("settingsRow") declare settingsRow: HTMLElement;
+	@id("settingsRow") settingsRow!: HTMLElement;
 
 	private createSections() {
 		this.map.forEach((entry) => {
