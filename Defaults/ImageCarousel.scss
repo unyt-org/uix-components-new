@@ -1,12 +1,4 @@
-@include "../utils.scss" as *;
 .image-carousel {
-	@include mode(dark) {
-		
-	}
-	
-	@include mode(light) {
-		
-	}
 
 	position: relative;
 	--actual_size: var(--size);
