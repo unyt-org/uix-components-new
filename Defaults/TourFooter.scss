@@ -313,20 +313,20 @@
 		}
 	}
 
-	@include mode(light) {
-		.tour-footer-main > div:first-of-type h1 > span::before {
-			background: linear-gradient(180deg,#000,hsla(255,100%,0%,.75));
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-		}
-		.tour-footer-main > div > .button-elem  {
-			border-color: black;
-			background-color: transparent;
-		}
-		.tour-footer-main > div > .button-elem:hover,
-		.tour-footer-main > div > .button-elem:active {
-			background-color: black;
-			color: white;
-		}
-	}
+	// @include mode(light) {
+	// 	.tour-footer-main > div:first-of-type h1 > span::before {
+	// 		background: linear-gradient(180deg,#000,hsla(255,100%,0%,.75));
+	// 		-webkit-background-clip: text;
+	// 		-webkit-text-fill-color: transparent;
+	// 	}
+	// 	.tour-footer-main > div > .button-elem  {
+	// 		border-color: black;
+	// 		background-color: transparent;
+	// 	}
+	// 	.tour-footer-main > div > .button-elem:hover,
+	// 	.tour-footer-main > div > .button-elem:active {
+	// 		background-color: black;
+	// 		color: white;
+	// 	}
+	// }
 }

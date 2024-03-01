@@ -29,21 +29,6 @@
 		height: 1em;
 	}
 
-	/*
-	@include mode(dark) {
-		#sitemapTitle>img {
-			filter: grayscale(1) brightness(100);
-		}
-	}
-
-	@include mode(light) {
-		#sitemapTitle>img {
-			filter: grayscale(1) brightness(0);
-		}
-	}
-	*/
-
-
 
 	#sitemapSections {
 		display: flex;

@@ -117,11 +117,11 @@
 					font-size: 30px;
 				}
 
-				@include mode(light) {
-					&>.fa {
-						color: var(--text_accent_1);
-					}
-				}
+				// @include mode(light) {
+				// 	&>.fa {
+				// 		color: var(--text_accent_1);
+				// 	}
+				// }
 			}
 			@media screen and (max-width: 800px) {
 				.list-item {
