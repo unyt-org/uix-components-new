@@ -55,11 +55,9 @@ export type LinkPaneItem = {
 		</div>
 	</div>
 })
+@frontend({inheritedFields: ["options"]})
 export class ListPane extends Component<ListPaneOptions> {
-	@frontend
-	declare options: any;
 
-	@frontend
 	protected override onDisplay(): void | Promise<void> {
 		[...this.querySelectorAll(".list-item") as unknown as HTMLElement[]].forEach((item, index) => {
 			if ((this.options.items[index] as LinkPaneItem).totalLink)

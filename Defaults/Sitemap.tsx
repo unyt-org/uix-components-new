@@ -25,11 +25,12 @@ import { LanguageSelect } from "./LanguageSelect.tsx";
 					size={38}
 					checked={UIX?.Theme?.mode === "dark"}
 					label={UIX?.Theme?.mode === "dark" ? this.strings.theme_dark : this.strings.theme_light}
-					id="apperanceToggle"/>
+					id="appearanceToggle"/>
 			</div>
 		</div>
 	</div>
 })
+@frontend({inheritedFields: ["options"]})
 export class Sitemap extends Component<{disableAnchor?: boolean}> {
 	@id("sitemapTitle") sitemapTitle!: HTMLDivElement;
 	@frontend @id("sitemapLink") sitemapLink!: HTMLAnchorElement;
@@ -38,12 +39,9 @@ export class Sitemap extends Component<{disableAnchor?: boolean}> {
 
 	@id("sitemapSections") sitemapSections!: HTMLDivElement;
 
-	@frontend @id languageSelector = <div></div>
 	@frontend @property appearance = "";
-	@id @frontend apperanceToggle!: ToggleSwitch;
+	@frontend @id appearanceToggle!: ToggleSwitch
 	
-	@frontend declare options;
-
 	@id("settingsRow") settingsRow!: HTMLElement;
 
 	private createSections() {
@@ -61,7 +59,6 @@ export class Sitemap extends Component<{disableAnchor?: boolean}> {
 
 	declare onScrollTop: () => void;
 
-	@frontend 
 	protected override async onDisplay() {
 		this.sitemapLink && ((this.sitemapLink as HTMLElement).onclick = () => {
 			if (this.options?.disableAnchor && this.onScrollTop)
@@ -70,8 +67,8 @@ export class Sitemap extends Component<{disableAnchor?: boolean}> {
 		});
 		if (!globalThis.UIX) await import("uix");
 		
-		this.apperanceToggle.setChecked(UIX.Theme.mode === "dark");
-		this.apperanceToggle.onToggle(e => {
+		this.appearanceToggle.setChecked(UIX.Theme.mode === "dark");
+		this.appearanceToggle.onToggle(e => {
 			UIX.Theme.setMode(e ? "dark" : "light");
 		})
 	}

@@ -15,7 +15,7 @@ type GridSectionPaneOptions = {
 	description?: string,
 	items: GridSectionPaneItemOptions[]
 }
-@template<GridSectionPaneOptions>((_, {header, description, items}) =>
+@template((_, {header, description, items}) =>
 	<div class="grid-section">
 		{header && <h1>{header}</h1>}
 		{description && <span>{description}</span>}

@@ -4,9 +4,9 @@ import { Component } from "uix/components/Component.ts";
 import Markdown from "./Markdown.tsx";
 import { content, include } from "uix/base/decorators.ts";
 @template()
+@frontend({inheritedFields: ["options"]})
 export class TourFooter extends Component<{ reverseOrder?: boolean }> {
-	@include strings!: Record<string, Datex.Value<string>>
-	@frontend declare options;
+	@include strings!: Record<string, Datex.Pointer<string>>
 	@content main = <div></div>;
 
 	override onCreate() {

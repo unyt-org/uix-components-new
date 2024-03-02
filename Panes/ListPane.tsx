@@ -26,7 +26,7 @@ export type LinkPaneItem = {
 	linkText?: string,
 	totalLink?: boolean,
 }
-@template<ListPaneOptions>((options) => {
+@template((options) => {
 	const {description, items, title, appearance } = options;
 	return <div class="list-pane" data-type={options.type} data-appearance={appearance ?? "dark"}>
 		<div class="content">
@@ -57,11 +57,8 @@ export type LinkPaneItem = {
 		</div>
 	</div>
 })
+@frontend({inheritedFields: ["options"]})
 export class ListPane extends Component<ListPaneOptions> {
-	@frontend
-	declare options: any;
-
-	@frontend
 	protected override onDisplay(): void | Promise<void> {
 		[...this.querySelectorAll(".list-item") as unknown as HTMLElement[]].forEach((item, index) => {
 			if ((this.options.items[index] as LinkPaneItem).totalLink)

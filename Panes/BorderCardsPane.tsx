@@ -1,7 +1,5 @@
-import type { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
-import { _ } from "unyt_core/utils/auto_map.ts";
 
 export type BorderCardsPaneItem = {
 	title: string,
@@ -12,7 +10,7 @@ type BorderCardsPaneOptions = {
 	description?: string,
 	items: BorderCardsPaneItem[]
 }
-@template<BorderCardsPaneOptions>((_, {items, header, description}) =>
+@template((_, {items, header, description}) =>
 	<div class="border-cards-pane">
 		{header && <h1>{header}</h1>}
 		{description && <span>{description}</span>}

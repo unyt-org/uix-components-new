@@ -4,7 +4,7 @@ import { AuthComponent } from "./AuthComponent.tsx";
 
 @style("./AuthIcon.scss")
 @style("./AuthComponent-standalone.scss")
-@template(function(this: AuthIcon) {
+@template(function() {
 	return <AuthComponent {...this.options} __create={true}>
 		<div slot={"content"}>
 			<a class="toggle">
@@ -18,20 +18,14 @@ import { AuthComponent } from "./AuthComponent.tsx";
 		<iframe id="iframe" allow="clipboard-write" allowtransparency="true"/>
 	</AuthComponent>
 })
+@frontend({inheritedFields: ["options", "backdrop", "button", "iframe", "blockerElem"]})
 export class AuthIcon extends AuthComponent {
-	@frontend declare options;
-	@frontend protected declare backdrop: HTMLDivElement;
-	@frontend protected declare button: HTMLDivElement;
-	@frontend protected declare iframe: HTMLIFrameElement;
-	@frontend protected declare blockerElem: HTMLDivElement;
 	@include("./AuthIcon.dx") customStrings!: { [ key: string ]: string};
 
-	@frontend
 	protected override async onDisplay() {
 		await super.onDisplay();
 	}
 
-	@frontend
 	override setupEvents() {
 		super.setupEvents();
 		this.addEventListener("click", (e) => this.toggle(e));

@@ -43,11 +43,8 @@ export type ArticlePaneItem = {
 		</div>
 	</div>
 })
+@frontend({inheritedFields: ["options"]})
 export class ArticlePane extends Component<ArticlePaneOptions> {
-	@frontend
-	declare options: any;
-
-	@frontend
 	protected override onDisplay(): void | Promise<void> {
 		[...this.querySelectorAll(".article-list-item") as unknown as HTMLElement[]].forEach((item, index) => {
 			if (this.options.items[index].totalLink)

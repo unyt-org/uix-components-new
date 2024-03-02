@@ -14,20 +14,20 @@ import { Supranet } from "unyt_core/datex_all.ts";
 		<slot tabindex="1" name="content"/>
 	</light-root>
 })
+@frontend({inheritedFields: ["options"]})
 export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "light" | "neutral" | "auto", __create?: boolean, __host?: string} & T> {
-	@id @frontend protected iframe!: HTMLIFrameElement;
-	@id @frontend protected backdrop!: HTMLDivElement;
-	@frontend declare options;
+	@id protected iframe!: HTMLIFrameElement;
+	@id protected backdrop!: HTMLDivElement;
 	@frontend eventListenersSet = false;
 	@frontend protected blockerElem!: HTMLDivElement;
-	@include("./AuthComponent.dx") @frontend strings!: { [ key: string ]: string};
+	@include("./AuthComponent.dx")  strings!: { [ key: string ]: string};
 
 	// @ts-ignore $
 	@frontend iFrameInterface!: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
 
 	@frontend _logger!: Datex.Logger;
 
-	@frontend
+	
 	protected override async onDisplay() {
 		if (this.options.__create)
 			return;
@@ -44,7 +44,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.load();
 	}
 
-	@frontend
+	
 	async load() {
 		if (!Datex.Supranet.connected) {
 			this._logger.warn("Main page is not connected to Supranet.");
@@ -70,17 +70,17 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		}, 0);
 	}
 
-	@frontend
+	
 	private onError() {
 		this.classList.add("error");
 	}
 
-	@frontend
+	
 	setScrolling(enabled = true) {
 		document.body.classList.toggle("disable-scroll", !enabled);
 	}
 
-	@frontend
+	
 	setBlocker(active: boolean) {
 		if (active)
 			document.body.append(this.blockerElem);
@@ -89,17 +89,17 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.setScrolling(!this.isBlockerActive());
 	}
 
-	@frontend
+	
 	isBlockerActive() {
 		return this.blockerElem?.isConnected;
 	}
 
-	@frontend
+	
 	private reopenAuthWindow() {
 		this.iFrameInterface.reopenAuthWindow();
 	}
 
-	@frontend
+	
 	protected setupEvents() {
 		this._logger.info("Setting up event listeners...");
 		this.backdrop.onclick = () => {
@@ -136,7 +136,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		})
 	}
 
-	@frontend
+	
 	public async toggle(event: Event) {
 		if (!this.iFrameInterface || !event.target || !(event.target as HTMLElement).classList.contains("toggle"))
 			return;
@@ -146,13 +146,13 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		else this.expand();
 	}
 
-	@frontend
+	
 	async collapse() {
 		await this.iFrameInterface.collapse();
 		this.classList.toggle("expanded", false);
 		this.setScrolling(true);
 	}
-	@frontend
+	
 	async expand() {
 		await this.iFrameInterface.expand();
 		this.classList.toggle("expanded", true);
@@ -160,18 +160,18 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.setScrolling(!isCentered);
 	}
 
-	@frontend
+	
 	private onIframeResize(height: number) {
 		if (height !== 0)
 			this.iframe.style.height = height + "px";
 	}
 
-	@frontend
+	
 	isExpanded() {
 		return this.classList.contains("expanded");
 	}
 
-	@frontend
+	
 	protected async onConnect() {
 		this._logger.success("Successfully connected with iframe");
 		await this.iFrameInterface.hello();
@@ -183,7 +183,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.classList.add("connected");
 	}
 
-	@frontend
+	
 	private async onLoad() {
 		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
 
@@ -207,7 +207,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.onConnect();
 	}
 
-	@frontend
+	
 	private createBlockerElement() {
 		this.blockerElem = <div id="auth-blocker">
 			<img src="https://cdn.unyt.org/unyt-resources/logos/unyt/AUTH/text-light-transparent.svg"/>
@@ -221,7 +221,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	}
 
 
-	@frontend
+	
 	async loadDependencies() {
 		await import("uix");
 		await import("./interfaces/WindowAppInterface.ts");
@@ -240,7 +240,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	@frontend forceDevice = false;
 
-	@frontend
+	
 	private onResize() {
 		const alignment = this.positionIframe();
 		if (!this.iFrameInterface)
@@ -258,12 +258,12 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		}
 	}
 
-	@frontend
+	
 	protected positionIframe() {
 		return this.autoPositionIframe();
 	}
 
-	@frontend
+	
 	protected autoPositionIframe(): "center" | "left" | "right" {
 		if (window.innerWidth < 500) {
 			this.iframe.setAttribute("data-alignment", "center")

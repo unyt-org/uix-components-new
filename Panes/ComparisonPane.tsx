@@ -20,7 +20,7 @@ export type ComparisonPaneOptions = {
 	header?: string
 }
 
-@template<ComparisonPaneOptions>((_, {header, items}) =>
+@template((_, {header, items}) =>
 	<div>
 		{header && <h1>{header}</h1>}
 		<table>

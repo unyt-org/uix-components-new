@@ -4,7 +4,7 @@ import { Datex, f, not, or, and, transform } from "unyt_core";
 import { include } from "uix/base/decorators.ts";
 
 @template()
-export class Newsletter extends Component<Component.Options> {
+export class Newsletter extends Component {
 	@content newsletterTitle!: HTMLElement;
 	@content newsletterDescription!: HTMLElement;
 	@content information = <div></div>

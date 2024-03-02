@@ -29,9 +29,9 @@ type MediaFlowPaneOptions = {
 		</div>
 	</div>
 	})
-export class MediaFlowPane extends Component<MediaFlowPaneOptions> {
+export class MediaFlowPane<in T> extends Component<MediaFlowPaneOptions> {
 
-	getMediaElement(url: Datex.RefOrValue<string | URL>) {
+	getMediaElement(url: Datex.RefOrValue<string>|Datex.RefOrValue<URL>) {
 		const urlVal = new Path(val(url));
 		const isVideo = (
 			urlVal.pathname.endsWith(".webm") ||

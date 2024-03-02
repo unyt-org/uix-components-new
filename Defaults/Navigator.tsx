@@ -10,7 +10,7 @@ export class Navigator extends Component {
 	@content expandButton = <Icon name="fa-chevron-down"/>;
 	private isCollapsed = true;
 	@include links!: {name: string, link: string}[]
-	@include strings!: Record<string, Datex.CompatValue<string>>
+	@include strings!: Record<string, Datex.RefOrValue<string>>
 
 	@content body = <div></div>;
 	@property navigation!: string;

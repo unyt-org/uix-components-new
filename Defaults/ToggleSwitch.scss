@@ -1,7 +1,7 @@
 :host {
 	--size: 50px;
 	--bg_color: var(--bg_console);
-	--highlight_color: var(--text_highlight);
+	--highlight_color: var(--text-highlight);
 	&>.label {
 		margin-right: 6px;
 	}
@@ -28,7 +28,7 @@
 		}
 		position: relative;
 		.slider {
-			border: 1px solid var(--text_highlight);
+			border: 1px solid var(--text-highlight);
 			position: absolute;
 			cursor: pointer;
 			top: 0;

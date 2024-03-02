@@ -9,7 +9,7 @@ export type FAQSectionPaneItem = {
 type FAQSectionPaneOptions = {
 	items: FAQSectionPaneItem[]
 }
-@template<FAQSectionPaneOptions>(({items}) =>
+@template((_, {items}) =>
 	<div class="faq-section-pane">
 		{(items as FAQSectionPaneItem[]).map(item => <details>
 			<summary><h3>{item.title}</h3></summary>
