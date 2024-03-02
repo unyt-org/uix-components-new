@@ -33,6 +33,8 @@ import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
 		}
 	</>
 })
-export default class Markdown extends Component<{value?: Datex.RefOrValue<string>, base?: URL | string, imageBase?: URL | string}, Datex.RefOrValue<string>> {
+export class Markdown extends Component<{value?: Datex.RefOrValue<string>, base?: URL | string, imageBase?: URL | string}, Datex.RefOrValue<string>> {
 	
 }
+
+export default Markdown;

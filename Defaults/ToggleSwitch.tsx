@@ -17,7 +17,7 @@ export type ToggleEvent = CustomEventInit<{checked: boolean, originalEvent: Even
 		</label>
 	</>
 })
-export default class ToggleSwitch extends Component<{
+export class ToggleSwitch extends Component<{
 	checked?: boolean,
 	size?: number,
 	label?: string | HTMLElement,
@@ -60,3 +60,5 @@ export default class ToggleSwitch extends Component<{
 
 	
 }
+
+export default ToggleSwitch;
