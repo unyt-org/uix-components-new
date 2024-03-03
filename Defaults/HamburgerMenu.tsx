@@ -6,35 +6,35 @@ import { Icon } from "./Icon.tsx";
 export class HamburgerMenu extends Component<{ action?: "default" | "none"}> {
 	public isCollapsed = true;
 
-	@frontend @content menuIcon = <Icon name="fa-bars"/>;
-	@frontend @content menuContainer = <div></div>;
+	@standalone @content menuIcon = <Icon name="fa-bars"/>;
+	@standalone @content menuContainer = <div></div>;
 
 	public addItem(...items: HTMLElement[]) {
 		this.menuContainer.append(...items);
 	}
 
-	@frontend public onExpand() {
+	@standalone public onExpand() {
 		this.menuContainer.classList.add("active");
 	}
-	@frontend public onCollapse() {
+	@standalone public onCollapse() {
 		this.menuContainer.classList.remove("active");
 	}
 
-	@frontend public collapse() {
+	@standalone public collapse() {
 		if (this.isCollapsed)
 			return;
 		this.isCollapsed = true;
 		this.onCollapse();
 	}
 
-	@frontend public expand() {
+	@standalone public expand() {
 		if (!this.isCollapsed)
 			return;
 		this.isCollapsed = false;
 		this.onExpand();
 	}
 
-	@frontend override onDisplay() {
+	@standalone override onDisplay() {
 		this.menuIcon.onclick = () => {
 			this.isCollapsed ? this.expand() : this.collapse();
 		}

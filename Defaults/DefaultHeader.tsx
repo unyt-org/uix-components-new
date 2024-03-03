@@ -23,9 +23,9 @@ type Link = {
 })
 export class DefaultHeader extends Component {
 	@include links!: Link[]
-	@frontend @id hamburgerMenu!: HamburgerMenu;
-	@frontend @id navigationContainer!: HTMLDivElement;
-	@frontend @id actionContainer!: HTMLDivElement;
+	@standalone @id hamburgerMenu!: HamburgerMenu;
+	@standalone @id navigationContainer!: HTMLDivElement;
+	@standalone @id actionContainer!: HTMLDivElement;
 
 	protected createHamburgerMenu(): Element | void {
 		const hamburgerMenu = <HamburgerMenu id="hamburgerMenu"/> as HamburgerMenu;
@@ -59,7 +59,7 @@ export class DefaultHeader extends Component {
 		</div>;
 	}
 
-	@frontend
+	@standalone
 	protected reload() {
 		globalThis.location.reload();
 	}
@@ -83,7 +83,7 @@ export class DefaultHeader extends Component {
 		</a>;
 	}
 
-	@frontend
+	@standalone
 	public collapseMenu() {
 		this.hamburgerMenu.collapse();
 	}

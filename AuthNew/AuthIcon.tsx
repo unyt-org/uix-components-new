@@ -18,7 +18,7 @@ import { AuthComponent } from "./AuthComponent.tsx";
 		<iframe id="iframe" allow="clipboard-write" allowtransparency="true"/>
 	</AuthComponent>
 })
-@frontend({inheritedFields: ["options", "backdrop", "button", "iframe", "blockerElem"]})
+@standalone({inheritedFields: ["options", "backdrop", "button", "iframe", "blockerElem"]})
 export class AuthIcon extends AuthComponent {
 	@include("./AuthIcon.dx") customStrings!: { [ key: string ]: string};
 

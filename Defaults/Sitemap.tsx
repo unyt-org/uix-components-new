@@ -30,17 +30,17 @@ import { LanguageSelect } from "./LanguageSelect.tsx";
 		</div>
 	</div>
 })
-@frontend({inheritedFields: ["options"]})
+@standalone({inheritedFields: ["options"]})
 export class Sitemap extends Component<{disableAnchor?: boolean}> {
 	@id("sitemapTitle") sitemapTitle!: HTMLDivElement;
-	@frontend @id("sitemapLink") sitemapLink!: HTMLAnchorElement;
+	@standalone @id("sitemapLink") sitemapLink!: HTMLAnchorElement;
 	@include strings!: Record<string, Datex.Value<string>>
 	@include map!: Array<{topic: string, items: {name: string, link: string}[]}>;
 
 	@id("sitemapSections") sitemapSections!: HTMLDivElement;
 
-	@frontend @property appearance = "";
-	@frontend @id appearanceToggle!: ToggleSwitch
+	@standalone @property appearance = "";
+	@standalone @id appearanceToggle!: ToggleSwitch
 	
 	@id("settingsRow") settingsRow!: HTMLElement;
 
@@ -73,8 +73,8 @@ export class Sitemap extends Component<{disableAnchor?: boolean}> {
 		})
 	}
 
-	@frontend themeThreshold = false;
-	@frontend toggleTheme() {
+	@standalone themeThreshold = false;
+	@standalone toggleTheme() {
 		if (this.themeThreshold)
 			return;
 		this.themeThreshold = true;

@@ -14,18 +14,18 @@ import { Supranet } from "unyt_core/datex_all.ts";
 		<slot tabindex="1" name="content"/>
 	</light-root>
 })
-@frontend({inheritedFields: ["options"]})
+@standalone({inheritedFields: ["options"]})
 export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "light" | "neutral" | "auto", __create?: boolean, __host?: string} & T> {
 	@id protected iframe!: HTMLIFrameElement;
 	@id protected backdrop!: HTMLDivElement;
-	@frontend eventListenersSet = false;
-	@frontend protected blockerElem!: HTMLDivElement;
+	@standalone eventListenersSet = false;
+	@standalone protected blockerElem!: HTMLDivElement;
 	@include("./AuthComponent.dx")  strings!: { [ key: string ]: string};
 
 	// @ts-ignore $
-	@frontend iFrameInterface!: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
+	@standalone iFrameInterface!: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
 
-	@frontend _logger!: Datex.Logger;
+	@standalone _logger!: Datex.Logger;
 
 	
 	protected override async onDisplay() {
@@ -232,13 +232,13 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		//await Datex.Supranet.connectAnonymous();
 	}
 
-	@frontend lastAppearance?: {
+	@standalone lastAppearance?: {
 		device: "mobile" | "desktop",
 		alignment: "left" | "right" | "center",
 		mode: "dark" | "light"
 	};
 
-	@frontend forceDevice = false;
+	@standalone forceDevice = false;
 
 	
 	private onResize() {

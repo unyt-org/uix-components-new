@@ -17,13 +17,13 @@ import { AuthComponent } from "./AuthComponent.tsx";
 		</div>
 	</AuthComponent> 
 })
-@frontend({
+@standalone({
 	inheritedFields: ["options", "backdrop", "button", "iframe", "blockerElem"]
 })
 export class AuthButton extends AuthComponent<{ shape?: "rect" | "square" | "circle" }> {
 
 	@include("./AuthButton.dx") customStrings!: { [ key: string ]: string};
-	@frontend forceDevice = true;
+	@standalone forceDevice = true;
 	protected override async onDisplay() {
 		await super.onDisplay();
 	}

@@ -17,14 +17,14 @@ export type ToggleEvent = CustomEventInit<{checked: boolean, originalEvent: Even
 		</label>
 	</>
 })
-@frontend({inheritedFields: ["options"]})
+@standalone({inheritedFields: ["options"]})
 export class ToggleSwitch extends Component<{
 	checked?: boolean,
 	size?: number,
 	label?: string | HTMLElement,
 	ontoggle?: (value: boolean) => void
 }> {
-	@frontend @id("toggle-switch") switch!: HTMLInputElement;
+	@standalone @id("toggle-switch") switch!: HTMLInputElement;
 	
 	public setChecked(val: boolean) {
 		if (this.switch)

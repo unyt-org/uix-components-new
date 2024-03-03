@@ -43,7 +43,7 @@ export type ArticlePaneItem = {
 		</div>
 	</div>
 })
-@frontend({inheritedFields: ["options"]})
+@standalone({inheritedFields: ["options"]})
 export class ArticlePane extends Component<ArticlePaneOptions> {
 	protected override onDisplay(): void | Promise<void> {
 		[...this.querySelectorAll(".article-list-item") as unknown as HTMLElement[]].forEach((item, index) => {

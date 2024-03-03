@@ -14,7 +14,7 @@ import { Icon } from "./Icon.tsx";
 	</>
 })
 export class LanguageSelect extends Component {
-	@frontend @id picker!: HTMLSelectElement;
+	@standalone @id picker!: HTMLSelectElement;
 
 	override onCreate() {
 		if (UIX) {
@@ -23,12 +23,12 @@ export class LanguageSelect extends Component {
 		}
 	}
 
-	@frontend
+	@standalone
 	selectLanguage() {
 
 	}
 
-	@frontend
+	@standalone
 	override async onDisplay() {
 		const defaultLanguage = navigator.language?.startsWith("de") ? "de" : "en";
 		this.picker.value = defaultLanguage;

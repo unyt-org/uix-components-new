@@ -36,16 +36,16 @@ type ImageCarouselOptions = {
 )
 export class ImageCarousel extends Component<ImageCarouselOptions> {
 	private index = 0;
-	@frontend @id("carousel-slider") carouselSlider!: HTMLDivElement;
-	@frontend @id("button-left") buttonLeft!: HTMLDivElement;
-	@frontend @id("button-right") buttonRight!: HTMLDivElement;
+	@standalone @id("carousel-slider") carouselSlider!: HTMLDivElement;
+	@standalone @id("button-left") buttonLeft!: HTMLDivElement;
+	@standalone @id("button-right") buttonRight!: HTMLDivElement;
 
-	@frontend offset = 0;
-	@frontend isAnimating = false;
+	@standalone offset = 0;
+	@standalone isAnimating = false;
 
-	@frontend startIndex = this.options.startIndex;
+	@standalone startIndex = this.options.startIndex;
 
-	@frontend
+	@standalone
 	private show(index: number, animation = true) {
 		if (animation && this.isAnimating)
 			return;
@@ -68,22 +68,22 @@ export class ImageCarousel extends Component<ImageCarouselOptions> {
 		this.setOffset(offset);
 	}
 
-	@frontend
+	@standalone
 	private setOffset(offset: number) {
 		this.offset += offset;
 		this.carouselSlider.style.transform = `translateX(${this.offset | 0}px)`;
 	}
 
-	@frontend
+	@standalone
 	private getImage(index: number) {
 		return this.querySelector(`img[data-index='${index}']`)!.parentNode as unknown as HTMLImageElement;
 	}
-	@frontend
+	@standalone
 	private imageCount() {
 		return this.querySelectorAll("img").length;
 	}
 
-	@frontend protected override onDisplay(): void | Promise<void> {
+	@standalone protected override onDisplay(): void | Promise<void> {
 		globalThis.addEventListener("resize", () => {
 			setTimeout(()=>this.show(this.index, false), 0);
 		});

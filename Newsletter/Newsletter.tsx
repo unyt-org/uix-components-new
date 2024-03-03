@@ -39,15 +39,15 @@ import { Icon } from "../Defaults/Icon.tsx";
 })
 export class NewsletterNew extends Component {
 	@include strings!: Record<string,Datex.RefOrValue<string>>;
-	@frontend @id form!: HTMLFormElement;
-	@frontend @id error!: HTMLDivElement;
+	@standalone @id form!: HTMLFormElement;
+	@standalone @id error!: HTMLDivElement;
 
-	@frontend
+	@standalone
 	override onDisplay() {
 		this.form.onsubmit = () => {}
 	}
 
-	@frontend
+	@standalone
 	async send() {
 		this.form.reportValidity();
 		if (!this.form.checkValidity())

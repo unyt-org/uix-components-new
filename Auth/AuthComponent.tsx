@@ -5,13 +5,13 @@ import { Component } from "uix/components/Component.ts";
 @template()
 export class AuthComponent extends Component {
 	@content authIcon = new AuthIcon();
-	@frontend @content signupContainer = 
+	@standalone @content signupContainer = 
 		<div>
 			<a onclick={()=>this.signIn()}>Sign in</a>
 			<a>Sign up</a>
 		</div>;
 
-	@frontend private signIn() {
+	@standalone private signIn() {
 		console.log("sign in")
 		const width = 400;
 		const height = 600;
