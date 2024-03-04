@@ -18,7 +18,7 @@ export class Navigator extends Component {
 	@include links!: {name: string, link: string}[]
 	@include strings!: Record<string, Datex.RefOrValue<string>>
 
-	@property navigation!: string;
+	@property navigation: string = '';
 
 	public onRefresh() {}
 
