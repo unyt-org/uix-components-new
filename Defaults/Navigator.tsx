@@ -54,7 +54,7 @@ export class Navigator extends Component {
 		const name = this.links.find(e => e.link === `${identifier.replace("#", '')}`)?.name;
 		this.navigatorTitle.setAttribute("href", `${identifier}`);
 		//@ts-ignore $
-		this.$.navigation = val(name);
+		this.navigation = val(name);
 		this.classList.remove("hidden");
 
 		this.body.querySelectorAll(`a[data-ref]`).forEach(e => e.classList.remove("hidden"));
