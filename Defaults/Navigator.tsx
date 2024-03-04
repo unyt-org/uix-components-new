@@ -4,15 +4,20 @@ import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 import { content, include } from "uix/base/decorators.ts";
 
-@template()
+@template(<>
+	<a id="navigatorTitle" href='/' class="navigation active"></a>
+	<Icon id="expandButton" name="fa-chevron-down"/>
+	<div id="body"/>
+</>)
 export class Navigator extends Component {
-	@content navigatorTitle = <a href='/' class="navigation active"></a>
-	@content expandButton = <Icon name="fa-chevron-down"/>;
+	@id navigatorTitle!: HTMLAnchorElement;
+	@id expandButton!: HTMLDivElement;
+	@id body!: HTMLDivElement;
+	
 	private isCollapsed = true;
 	@include links!: {name: string, link: string}[]
 	@include strings!: Record<string, Datex.RefOrValue<string>>
 
-	@content body = <div></div>;
 	@property navigation!: string;
 
 	public onRefresh() {}

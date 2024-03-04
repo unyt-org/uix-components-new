@@ -2,12 +2,17 @@ import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 
-@template()
+@template(function() {
+	return <>
+		<Icon id="menuIcon" name="fa-bars"/>
+		<div id="menuContainer"></div>
+	</>
+})
 export class HamburgerMenu extends Component<{ action?: "default" | "none"}> {
 	public isCollapsed = true;
 
-	@standalone @content menuIcon = <Icon name="fa-bars"/>;
-	@standalone @content menuContainer = <div></div>;
+	@id menuIcon!: HTMLElement;
+	@id menuContainer!: HTMLDivElement;
 
 	public addItem(...items: HTMLElement[]) {
 		this.menuContainer.append(...items);

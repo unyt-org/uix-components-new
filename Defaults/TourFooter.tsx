@@ -2,18 +2,12 @@ import { Datex } from "unyt_core/datex.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import Markdown from "./Markdown.tsx";
-import { content, include } from "uix/base/decorators.ts";
-@template()
-@standalone({inheritedFields: ["options"]})
-export class TourFooter extends Component<{ reverseOrder?: boolean }> {
-	@include strings!: Record<string, Datex.Pointer<string>>
-	@content main = <div></div>;
-
-	override onCreate() {
-		const href = ["https://github.com/unyt-org", "https://unyt.org/patreon"];
-		this.options?.reverseOrder && href.reverse();
-		
-		this.main = <div class="tour-footer-main" style="--delay: 7s">
+import { include } from "uix/base/decorators.ts";
+@template(function() {
+	const href = ["https://github.com/unyt-org", "https://unyt.org/patreon"];
+	this.options?.reverseOrder && href.reverse();
+	return <>
+		<div id="main" class="tour-footer-main" style="--delay: 7s">
 			<div>
 				<h1>
 					<span style={`--content:'${this.strings.keyword1}.';--start-color:#0075e2;--end-color:#00cdc6`}>
@@ -44,5 +38,10 @@ export class TourFooter extends Component<{ reverseOrder?: boolean }> {
 				</div>
 			</div>
 		</div>
-	}
+	</>;
+})
+@standalone({inheritedFields: ["options"]})
+export class TourFooter extends Component<{ reverseOrder?: boolean }> {
+	@include strings!: Record<string, Datex.Pointer<string>>
+	@id main!: HTMLDivElement;
 }
