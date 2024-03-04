@@ -5,18 +5,16 @@ import { Icon } from "./Icon.tsx";
 @template(function() {
 	return <>
 		<Icon id="menuIcon" name="fa-bars"/>
-		<div id="menuContainer"></div>
+		<div id="menuContainer">
+			{...this.options.items}
+		</div>
 	</>
 })
-export class HamburgerMenu extends Component<{ action?: "default" | "none"}> {
+export class HamburgerMenu extends Component<{ items: HTMLElement[], action?: "default" | "none"}> {
 	public isCollapsed = true;
 
 	@id menuIcon!: HTMLElement;
 	@id menuContainer!: HTMLDivElement;
-
-	public addItem(...items: HTMLElement[]) {
-		this.menuContainer.append(...items);
-	}
 
 	@standalone public onExpand() {
 		this.menuContainer.classList.add("active");

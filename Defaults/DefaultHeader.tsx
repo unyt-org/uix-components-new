@@ -28,8 +28,7 @@ export class DefaultHeader extends Component {
 	@standalone @id actionContainer!: HTMLDivElement;
 
 	protected createHamburgerMenu(): Element | void {
-		const hamburgerMenu = <HamburgerMenu id="hamburgerMenu"/> as HamburgerMenu;
-		hamburgerMenu.addItem(
+		const hamburgerMenu = <HamburgerMenu items={[
 			...this.links
 				.map(link => {
 					if (link.children)
@@ -39,8 +38,8 @@ export class DefaultHeader extends Component {
 								<a href={child.link} title={child.name}>{child.name}</a>)}
 						</details>
 					return <a href={link.link} title={link.name}>{link.name}</a>;
-				}) as HTMLElement[]
-		);
+				}) as HTMLElement[]	
+		]} id="hamburgerMenu"/> as HamburgerMenu;
 		return hamburgerMenu;
 	}
 
