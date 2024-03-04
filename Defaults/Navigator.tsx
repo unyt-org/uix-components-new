@@ -4,11 +4,15 @@ import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";
 import { content, include } from "uix/base/decorators.ts";
 
-@template(<>
-	<a id="navigatorTitle" href='/' class="navigation active"></a>
-	<Icon id="expandButton" name="fa-chevron-down"/>
-	<div id="body"/>
-</>)
+@template(function() {
+	return <>
+		<a id="navigatorTitle" href='/' class="navigation active">
+			{this.$.navigation}
+		</a>
+		<Icon id="expandButton" name="fa-chevron-down"/>
+		<div id="body"/>
+	</>
+})
 export class Navigator extends Component {
 	@id navigatorTitle!: HTMLAnchorElement;
 	@id expandButton!: HTMLDivElement;
@@ -50,7 +54,7 @@ export class Navigator extends Component {
 		const name = this.links.find(e => e.link === `${identifier.replace("#", '')}`)?.name;
 		this.navigatorTitle.setAttribute("href", `${identifier}`);
 		//@ts-ignore $
-		this.navigation = val(name);
+		this.$.navigation = val(name);
 		this.classList.remove("hidden");
 
 		this.body.querySelectorAll(`a[data-ref]`).forEach(e => e.classList.remove("hidden"));
@@ -77,7 +81,6 @@ export class Navigator extends Component {
 	}
 
 	override onCreate() {
-		this.navigatorTitle = <a class="navigation active">{this.$.navigation}</a>;
 		this.navigatorTitle.onclick = () => {
 			this.onCollapse();
 			this.onRefresh();
