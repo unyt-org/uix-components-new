@@ -16,17 +16,22 @@ export val refs = [
 	{
 		name: 'Twitter',
 		icon: 'fa-brands fa-twitter',
-		link: https://twitter.com/unytorg
+		link: https://unyt.org/twitter
+	},
+	{
+		name: 'Mastodon',
+		icon: 'fa-brands fa-mastodon',
+		link: https://unyt.org/mastodon
 	},
 	{
 		name: 'LinkedIn',
 		icon: 'fa-brands fa-linkedin',
-		link: https://linkedin.com/company/unyt-org
+		link: https://unyt.org/linkedin
 	},
 	{
 		name: 'Instagram',
 		icon: 'fa-brands fa-instagram',
-		link: https://instagram.com/unytorg
+		link: https://unyt.org/instagram
 	},
 ];
 
