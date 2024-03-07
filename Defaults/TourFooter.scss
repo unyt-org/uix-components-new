@@ -9,6 +9,10 @@
 		align-items: center;
 		grid-gap: 40px;
 		flex-wrap: wrap;
+		a {
+			color: var(--accent);
+			text-decoration: none;
+		}
 	}
 	.tour-footer-main > div:first-of-type {
 		min-width: 200px;
