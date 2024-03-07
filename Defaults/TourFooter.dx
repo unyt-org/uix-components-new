@@ -1,5 +1,10 @@
 use localtext from #std;
 
+export val links = [
+	https://github.com/unyt-org,
+	https://unyt.org/donate
+];
+
 # strings ----------------------------------
 export val strings = {
 	description: localtext {

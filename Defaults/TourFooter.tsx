@@ -4,7 +4,10 @@ import { Component } from "uix/components/Component.ts";
 import Markdown from "./Markdown.tsx";
 import { include } from "uix/base/decorators.ts";
 @template(function() {
-	const href = ["https://github.com/unyt-org", "https://unyt.org/patreon"];
+	const href = this.links && this.links[0] ?
+		[this.links[0].toString(), this.links[1].toString()]
+		: ["https://github.com/unyt-org", "https://unyt.org/patreon"];
+	
 	this.options?.reverseOrder && href.reverse();
 	return <>
 		<div id="main" class="tour-footer-main" style="--delay: 7s">
@@ -43,5 +46,6 @@ import { include } from "uix/base/decorators.ts";
 @standalone({inheritedFields: ["options"]})
 export class TourFooter extends Component<{ reverseOrder?: boolean }> {
 	@include strings!: Record<string, Datex.Pointer<string>>
+	@include links!: [URL, URL];
 	@id main!: HTMLDivElement;
 }
