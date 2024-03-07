@@ -36,7 +36,7 @@
 		color: var(--text_highlight);
 	}
 	.navigation.hidden {
-		display: none;
+		display: none!important;
 	}
 	#navigatorTitle {
 		height: auto;
@@ -69,7 +69,7 @@
 		background-color: var(--bg_color);
 		width: 0px;
 		box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 8px !important;
-
+		gap: 8px;
 		/* width: 100%;
 		page-break-after: always;
 		break-after: always; */
