@@ -213,7 +213,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			<img src="https://cdn.unyt.org/unyt-resources/logos/unyt/AUTH/text-light-transparent.svg"/>
 			<p>
 				{this.strings.blockerText}<br/>
-				<a onclick:frontend={() => use("no-datex", this) && this.reopenAuthWindow()}>
+				<a onclick:frontend={() => use("standalone", this) && this.reopenAuthWindow()}>
 					{this.strings.continue}
 				</a>
 			</p>
