@@ -1,5 +1,5 @@
 // deno-lint-ignore-file require-await
-@entrypoint
+@endpoint
 export class WindowAppInterface {
 	@property static async hello() { }
 

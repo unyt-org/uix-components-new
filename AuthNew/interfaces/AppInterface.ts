@@ -1,7 +1,6 @@
-// deno-lint-ignore-file require-await
 import { Datex } from "unyt_core/datex.ts";
 
-@entrypoint
+@endpoint
 export class AppInterface {
 	@property static async onKeysReceived(endpoint: Datex.Endpoint, signKeys: [ArrayBuffer, ArrayBuffer], decKeys: [ArrayBuffer, ArrayBuffer]) {
 		console.warn("On logged in: ", endpoint, signKeys, decKeys);
@@ -26,6 +25,7 @@ export class AppInterface {
 			try {
 				await Datex.Supranet.init(newEndpoint, true);
 			} catch {
+				// @ts-ignore $
 				globalThis.reset?.();
 			}
 		}
