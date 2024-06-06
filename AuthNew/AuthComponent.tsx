@@ -3,8 +3,6 @@ import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
 import { Datex, f } from "unyt_core/datex.ts";
 import { UIX } from "uix";
-import { Supranet } from "unyt_core/datex_all.ts";
-
 
 @template(function() {
 	return <light-root data-appearance={this.options.appearance ?? "auto"}>
@@ -24,9 +22,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	// @ts-ignore $
 	@standalone iFrameInterface!: typeof import("./interfaces/IFrameInterface.ts").IFrameInterface;
-
 	@standalone _logger!: Datex.Logger;
-
 	
 	protected override async onDisplay() {
 		if (this.options.__create)
@@ -43,7 +39,6 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 		this.iframe.onerror = this.iframe.onabort = () => this.onError();
 		this.load();
 	}
-
 	
 	async load() {
 		if (!Datex.Supranet.connected) {
@@ -69,17 +64,14 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			this.iframe.src = src;
 		}, 0);
 	}
-
 	
 	private onError() {
 		this.classList.add("error");
 	}
-
 	
 	setScrolling(enabled = true) {
 		document.body.classList.toggle("disable-scroll", !enabled);
 	}
-
 	
 	setBlocker(active: boolean) {
 		if (active)
@@ -88,7 +80,6 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			document.body.removeChild(this.blockerElem);
 		this.setScrolling(!this.isBlockerActive());
 	}
-
 	
 	isBlockerActive() {
 		return this.blockerElem?.isConnected;
@@ -98,7 +89,6 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 	private reopenAuthWindow() {
 		this.iFrameInterface.reopenAuthWindow();
 	}
-
 	
 	protected setupEvents() {
 		this._logger.info("Setting up event listeners...");
@@ -257,15 +247,13 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			this.lastAppearance = appearance;
 		}
 	}
-
 	
 	protected positionIframe() {
 		return this.autoPositionIframe();
 	}
-
 	
 	protected autoPositionIframe(): "center" | "left" | "right" {
-		if (window.innerWidth < 500) {
+		if (globalThis.innerWidth < 500) {
 			this.iframe.setAttribute("data-alignment", "center")
 			return "center";
 		}
