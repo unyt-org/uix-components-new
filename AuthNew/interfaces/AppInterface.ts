@@ -5,7 +5,6 @@ export class AppInterface {
 	@property static async onKeysReceived(endpoint: Datex.Endpoint, signKeys: [ArrayBuffer, ArrayBuffer], decKeys: [ArrayBuffer, ArrayBuffer]) {
 		console.warn("On logged in: ", endpoint, signKeys, decKeys);
 		try {
-			debugger;
 			await Datex.Supranet.init(endpoint, true, signKeys, decKeys);
 			globalThis.location.reload();
 		} catch (error) {
