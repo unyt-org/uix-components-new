@@ -5,6 +5,7 @@ export class AppInterface {
 	@property static async onKeysReceived(endpoint: Datex.Endpoint, signKeys: [ArrayBuffer, ArrayBuffer], decKeys: [ArrayBuffer, ArrayBuffer]) {
 		console.warn("On logged in: ", endpoint, signKeys, decKeys);
 		try {
+			debugger;
 			await Datex.Supranet.init(endpoint, true, signKeys, decKeys);
 			globalThis.location.reload();
 		} catch (error) {
@@ -14,7 +15,6 @@ export class AppInterface {
 
 	@property static async onLoginWithEndpoint(endpoint: Datex.Endpoint) {
 		// TODO activate auth proxy
-		// const AuthInterface = (await import("http://localhost:9999/@uix/src/common/proxy/auth-interface.ts")).AuthInterface;
 		// const auth = await AuthInterface.get();
 		// await auth.useEndpoint(endpoint);
 	}

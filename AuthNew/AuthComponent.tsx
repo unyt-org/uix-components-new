@@ -29,9 +29,15 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 			return;
 		await this.loadDependencies();
 		this._logger = new Datex.Logger("Auth");
+		if (!this.iframe) {
+			this._logger.warn("Iframe was not found!");
+			// @ts-ignore $
+			this.iframe = this.querySelector("iframe");
+		}
 
 		this._logger.success("Loaded dependencies (UIX / DATEX COMInterface)");
 		this.createBlockerElement();
+		
 		this.iframe.setAttribute("sandbox", "allow-popups-to-escape-sandbox allow-modals allow-forms allow-popups allow-scripts allow-same-origin allow-top-navigation");
 		
 		
