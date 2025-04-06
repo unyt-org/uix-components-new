@@ -1,8 +1,9 @@
 import { Path } from "uix/utils/path.ts";
 import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";
-import { Datex, f } from "unyt_core/datex.ts";
+import { Datex, f } from "datex-core-legacy/datex.ts";
 import { UIX } from "uix";
+import { template } from "uix/html/template.ts";
 
 @template(function() {
 	return <light-root data-appearance={this.options.appearance ?? "auto"}>
@@ -181,7 +182,7 @@ export class AuthComponent<T = {}> extends Component<{appearance?: "dark" | "lig
 
 	
 	private async onLoad() {
-		const { WindowInterface } = await import("unyt_core/network/communication-interfaces/window-interface.ts");
+		const { WindowInterface } = await import("datex-core-legacy/network/communication-interfaces/window-interface.ts");
 
 		this._logger.success("Auth Comp (iframe) was loaded");
 		this._logger.info("Initializing iframe communication interface...");

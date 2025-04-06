@@ -1,6 +1,6 @@
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
-import { Datex, f, not, or, and, transform } from "unyt_core";
+import { Datex, f, not, or, and, transform } from "datex-core-legacy";
 import { include } from "uix/base/decorators.ts";
 
 @template()

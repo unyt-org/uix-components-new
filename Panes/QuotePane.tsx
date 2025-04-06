@@ -1,4 +1,3 @@
-import type { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 

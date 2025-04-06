@@ -2,7 +2,7 @@ import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import Markdown from "../Defaults/Markdown.tsx";
 import { include } from "uix/base/decorators.ts";
-import { type Datex } from "unyt_core/datex.ts";
+import { type Datex } from "datex-core-legacy/datex.ts";
 import { Icon } from "../Defaults/Icon.tsx";
 
 

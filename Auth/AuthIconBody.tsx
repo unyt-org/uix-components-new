@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-namespace
-import { Datex } from "unyt_core/datex.ts";
+import { Datex } from "datex-core-legacy/datex.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import { include } from "uix/base/decorators.ts";

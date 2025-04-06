@@ -1,8 +1,9 @@
-import { Datex } from "unyt_core/datex.ts";
+import { Datex } from "datex-core-legacy/datex.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import Markdown from "./Markdown.tsx";
 import { include } from "uix/base/decorators.ts";
+
 @template(function() {
 	const href = this.links && this.links[0] ?
 		[this.links[0].toString(), this.links[1].toString()]

@@ -1,4 +1,4 @@
-import { Datex } from "unyt_core/datex.ts";
+import { Datex } from "datex-core-legacy/datex.ts";
 import { Component } from "uix/components/Component.ts";
 import { template } from "uix/html/template.ts";
 import { Icon } from "./Icon.tsx";

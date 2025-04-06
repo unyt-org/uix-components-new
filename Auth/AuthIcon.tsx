@@ -1,4 +1,4 @@
-import { transform } from 'unyt_core/datex_short.ts';
+import { transform } from "datex-core-legacy/datex_short.ts";
 import { AuthIconBody } from "./AuthIconBody.tsx";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";

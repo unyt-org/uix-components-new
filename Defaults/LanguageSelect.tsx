@@ -1,6 +1,7 @@
 import { UIX } from "uix";
 import { Component } from "uix/components/Component.ts";
 import { Icon } from "./Icon.tsx";
+import { template } from "uix/html/template.ts";
 
 @template(function(this: LanguageSelect) {
 	return <>

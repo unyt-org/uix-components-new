@@ -1,3 +1,5 @@
+import { template } from "uix/html/template.ts";
+
 const IDENTIFIER = "UIX-FA";
 export const Icon = template<{name: string}>(({name}) => {
 	if (document.head && document.head.querySelector) {

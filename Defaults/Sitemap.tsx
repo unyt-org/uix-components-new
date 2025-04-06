@@ -1,6 +1,6 @@
 
 import { Component } from "uix/components/Component.ts";
-import { Datex } from "unyt_core";
+import { Datex } from "datex-core-legacy";
 import { template } from "uix/html/template.ts";
 import { include } from "uix/base/decorators.ts";
 import { Icon } from "../Defaults/Icon.tsx";

@@ -2,7 +2,7 @@ import { Path } from 'uix/utils/path.ts';
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 import Markdown from "../Defaults/Markdown.tsx";
-import { _ } from "unyt_core/utils/auto_map.ts";
+import { _ } from "datex-core-legacy/utils/auto_map.ts";
 
 type AppDownloadPaneOptions = {
 	header: string,
