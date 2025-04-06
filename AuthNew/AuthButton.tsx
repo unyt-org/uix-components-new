@@ -1,5 +1,7 @@
 import { include } from "uix/base/decorators.ts";
 import { AuthComponent } from "./AuthComponent.tsx";
+import { template } from "uix/html/template.ts";
+import { style } from "uix/html/style.ts";
 
 @style("./AuthButton.scss")
 @style("./AuthComponent-standalone.scss")

@@ -1,4 +1,4 @@
-import { Path } from 'datex-core-legacy/utils/path.ts';
+import { Path } from "datex-core-legacy/utils/path.ts";
 import { template } from "uix/html/template.ts";
 import { Component } from "uix/components/Component.ts";
 

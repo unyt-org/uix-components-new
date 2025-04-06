@@ -1,8 +1,9 @@
 import { Component } from "uix/components/Component.ts";
 import * as marked from '../lib/marked-js.ts';
-import { Datex } from "unyt_core/datex.ts";
+import { Datex } from "datex-core-legacy/datex.ts";
 import { unsafeHTML } from "uix/html/unsafe-html.ts";
 import { baseUrl, toBaseURL } from "../lib/marked-base-url.ts";
+import { blankTemplate } from "uix/html/template.ts";
 
 @blankTemplate(({value, children, imageBase, base}) => {
 	const options = baseUrl(base?.toString() ?? "");

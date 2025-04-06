@@ -1,9 +1,10 @@
 {
-	"importMap": "./importmap.dev.json",
+	"importMap": "./importmap.json",
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"jsxImportSource": "uix",
 		"lib": [
+			"dom",
 			"deno.window",
 			"esnext"
 		]
