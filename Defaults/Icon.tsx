@@ -4,7 +4,7 @@ export const Icon = template<{name: string}>(({name}) => {
 		if (!document.head.querySelector(`link#${IDENTIFIER}`))
 			document.head.append(<link
 				id={IDENTIFIER}
-				href={"https://dev.cdn.unyt.org/uix/style/fontawesome.css"}
+				href={"https://cdn.unyt.org/unyt-components/theme/fontawesome/css/all.min.css"}
 				rel={"stylesheet"}/>);
 	} else {
 		// FIXME add to document head on deno!
